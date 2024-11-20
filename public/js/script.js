@@ -17,4 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         form.reset();
     });
+
+
+    document.getElementById('canton').addEventListener('change', function() {
+        const cantonCustom = document.getElementById('cantonCustom');
+        if (this.value === 'otro') {
+            cantonCustom.style.display = 'block';
+        } else {
+            cantonCustom.style.display = 'none';
+        }
+    });
 });

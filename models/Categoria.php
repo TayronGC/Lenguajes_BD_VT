@@ -14,13 +14,13 @@ class Categoria {
         try {
 
         //LLamado al SP
-        $stid = oci_parse($this->conn,'BEGIN ver_categoria(:p_id_categoria,:p_nombre_categoria, :p_descripcion); END;');
+        $stid = oci_parse($this->conn,'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_CATEGORIA_TB_VER_CATEGORIA_SP(:p_id_categoria,:p_nombre_categoria, :p_descripcion); END;');
     
         oci_bind_by_name($stid, ":p_id_categoria",$id);
         oci_bind_by_name($stid, ":p_nombre_categoria",$nombre_categoria,100);
         oci_bind_by_name($stid, ":p_descripcion",$descripcion,255);
 
-        if (!@oci_execute($stid)) { // El "@" oculta el warning de PHP
+        if (!oci_execute($stid)) { // El "@" oculta el warning de PHP
             $error = oci_error($stid); // Obtén el error específico de Oracle
             if (empty($nombre_categoria) && empty($descripcion)) {
                         throw new Exception("No se encontró la categoría con el ID proporcionado.<br>");
@@ -73,9 +73,8 @@ class Categoria {
 
     public function insertarCategoria(){
         try {
-        $stid = oci_parse($this->conn,'BEGIN insertar_categoria(:p_id_categoria,:p_nombre_categoria, :p_descripcion); END;');
+        $stid = oci_parse($this->conn,'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_CATEGORIA_TB_INSERTAR_CATEGORIA_SP(:p_nombre_categoria, :p_descripcion); END;');
 
-        oci_bind_by_name($stid, ":p_id_categoria",$this->id_categoria);
         oci_bind_by_name($stid, ":p_nombre_categoria",$this->nombre_categoria,100);
         oci_bind_by_name($stid, ":p_descripcion",$this->descripcion,255);
 

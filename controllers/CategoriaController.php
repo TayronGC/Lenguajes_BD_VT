@@ -3,7 +3,7 @@ require_once '../models/DataBase.php';
 require_once '../models/Categoria.php';
 
 $controller = new CategoriaController();
-
+/*
 if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
     $action = $_GET['action'];
 
@@ -17,7 +17,7 @@ if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
 } else {
     echo "Acción no válida o método no encontrado.";
 }
-
+*/
 /*
 
 if (isset($_GET['action']) && $_GET['action'] == 'insertarCategoria') {
@@ -50,25 +50,41 @@ class CategoriaController {
 
     public function insertarCategoria() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->categoria->id_categoria = $_POST['id_categoria'];
             $this->categoria->nombre_categoria = $_POST['nombre_categoria'];
             $this->categoria->descripcion = $_POST['descripcion'];
 
             if($this->categoria->insertarCategoria()) {
                 //echo "Categoria creada con exito";
-                header ("Location: http://localhost/Grupo2_SC-504_VT_ProyectoFinal/views/viewCategoria.php");
+                //header ("Location: http://localhost/Grupo2_SC-504_VT_ProyectoFinal/views/viewCategoria.php");
+                echo "<script>window.location.href = 'index.php?controller=Categoria&action=list';</script>";
             }else {
                 echo "Hubo un error al crear la categoría.";
             }
     
+        }  
+    }
+
+    public function verTodasCategorias(){
+        $categorias = $this->categoria->verTodasCategorias();
+        if(!empty($categorias)){
+            include '../views/ViewAllCategorias.php';
+            //var_dump($categorias); // Muestra el contenido de $categorias
+            //return $categorias;
+        }else{
+            echo "No hay categorias";
+            //return [];
+        }
+        //var_dump($categorias); // Muestra el contenido de $categorias
+        
     }
 }
-}
+
+
 
 //Ejecutar el metodo verCategoria
-/*
+
 $controller = new CategoriaController();
-$id_categoria = 6;  
-$controller->verCategoria($id_categoria);
-*/
+//$id_categoria = 6;  
+$controller->verTodasCategorias();
+
 ?>

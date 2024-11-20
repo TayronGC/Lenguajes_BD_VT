@@ -8,8 +8,6 @@
 <body>
     <section>
         <form action="../controllers/CategoriaController.php?action=insertarCategoria" method="post">
-            <label>Id categoria
-            <input type="text" name="id_categoria"></label>
 
             <label>Nombre Categoria
             <input type="text" name="nombre_categoria"></label>
