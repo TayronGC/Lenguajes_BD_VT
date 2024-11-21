@@ -57,35 +57,19 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Productos populares
-
+                                        Productos populares
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="index.php?controller=Gasto&action=create">Agregar Gasto</a></li>
-                                        <li><a class="dropdown-item" href="index.php?controller=Gasto&action=list">Ver Gastos</a></li>
-                                    </ul>
-                                </li>
 
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Categorias
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="addCategoria.php">Agregar Categoria</a></li>
-                                        <li><a class="dropdown-item" href="viewCategoria.php">Ver Categorias</a></li>
-                                    </ul>
                                 </li>
-
-                               
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="
-                    false">CUIDADO PERSONAL</a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="index.php?controller=Gasto&action=graph">Gastos por Categoria</a></li>
-                                        <li><a class="dropdown-item" href="index.php?controller=Gasto&action=graphByMonth">Ver Gráfico de Gastos por Mes</a></li>
+                                    false">CUIDADO PERSONAL</a>
+                                </li>
 
-                                    </ul>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="
+                                    false">Inicio Sesión</a>
                                 </li>
                             </ul>
                             <div class="user_option">
@@ -114,10 +98,10 @@
                                     <div>
 
                                         <h1>
-                                            Bienvenido a Macro Salud 
+                                            Bienvenido a Macro Salud
                                         </h1>
                                         <p>
-                                        Accede fácilmente a todas las funcionalidades de nuestra tienda en un solo lugar.
+                                            Accede fácilmente a todas las funcionalidades de nuestra tienda en un solo lugar.
                                         </p>
                                         <div class="">
                                             <a onclick="window.location.href='#contacto'">
@@ -156,10 +140,10 @@
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Gestión integral de productos, clientes y ventas al alcance de un clic.
+                                    Los mejores productos.
                                 </h5>
                                 <p>
-                                    Nuestro menú de navegación te permite explorar cada sección de manera intuitiva.
+                                    Manejamos una alta gama de productos de calidad para que puedas encontrar todo lo que necesitas en un solo lugar.
                                 </p>
                             </div>
                         </div>
@@ -171,10 +155,10 @@
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Optimiza tu gestión de inventario con herramientas de búsqueda y filtrado.
+                                    Excelente servicio al cliente.
                                 </h5>
                                 <p>
-                                    Mantente al tanto de los productos que están por caducar o agotarse.
+                                    Nuestro equipo de soporte está disponible para ayudarte en cualquier momento, ofreciendo asesoría personalizada para que puedas sacar el máximo provecho de nuestra plataforma.
                                 </p>
                             </div>
                         </div>
@@ -186,10 +170,10 @@
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Registra y consulta la información de tus clientes de forma sencilla.
+                                    Pagina intuitiva.
                                 </h5>
                                 <p>
-                                    Accede al historial de compras para ofrecer un mejor servicio al cliente.
+                                    Nuestra plataforma está diseñada para que puedas navegar de forma sencilla y rápida, encontrando todo lo que necesitas en un solo lugar.
                                 </p>
                             </div>
                         </div>
@@ -230,11 +214,6 @@
                         </h2>
                         <p>
                             En Macro Salud, Ofrecemos una amplia variedad de productos de alta calidad y un servicio excepcional que está diseñado para satisfacer todas tus necesidades diarias y mejorar tu experiencia de compra. </p>
-                        <div class="btn-box">
-                            <a href="">
-                                READ MORE
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -268,29 +247,29 @@
                             </h2>
                         </div>
                         <form action="https://formsubmit.co/inteligenteahorra@gmail.com" method="POST">
-                            
-                                <div>
-                                    <label for="name">Nombre</label>
-                                    <input type="text" name="name" id="name" placeholder="Nombre" required="true" />
-                                </div>
-                                <div>
-                                    <label for="email">Correo Electrónico</label>
-                                    <input type="email" name="email" id="email" placeholder="Correo Electrónico" required="true" />
-                                </div>
-                                <div>
-                                    <label for="subject">Asunto</label>
-                                    <input type="text" name="subject" id="subject" placeholder="Asunto" required="true" />
-                                </div>
-                                <div>
-                                    <label for="comments">Mensaje</label>
-                                    <input type="text" class="message-box" name="comments" id="comments" placeholder="Mensaje" required="true" />
-                                </div>
 
-                                <div class="d-flex ">
-                                    <input class="btn" type="submit" value="enviar">
-                                    <input type="hidden" value="http://localhost:3000/index.php?controller=Dashboard&action=index" name="_next">
-                                    <input type="hidden" value="false" name="_captcha">
-                                </div>
+                            <div>
+                                <label for="name">Nombre</label>
+                                <input type="text" name="name" id="name" placeholder="Nombre" required="true" />
+                            </div>
+                            <div>
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" name="email" id="email" placeholder="Correo Electrónico" required="true" />
+                            </div>
+                            <div>
+                                <label for="subject">Asunto</label>
+                                <input type="text" name="subject" id="subject" placeholder="Asunto" required="true" />
+                            </div>
+                            <div>
+                                <label for="comments">Mensaje</label>
+                                <input type="text" class="message-box" name="comments" id="comments" placeholder="Mensaje" required="true" />
+                            </div>
+
+                            <div class="d-flex ">
+                                <input class="btn" type="submit" value="enviar">
+                                <input type="hidden" value="http://localhost:3000/index.php?controller=Dashboard&action=index" name="_next">
+                                <input type="hidden" value="false" name="_captcha">
+                            </div>
                         </form>
                     </div>
                 </div>
