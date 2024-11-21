@@ -71,8 +71,8 @@
                                         Categorias
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="index.php?controller=Categoria&action=create">Agregar Categoria</a></li>
-                                        <li><a class="dropdown-item" href="index.php?controller=Categoria&action=list">Ver Categorias</a></li>
+                                        <li><a class="dropdown-item" href="addCategoria.php">Agregar Categoria</a></li>
+                                        <li><a class="dropdown-item" href="viewCategoria.php">Ver Categorias</a></li>
                                     </ul>
                                 </li>
 

@@ -3,7 +3,8 @@ require_once '../models/DataBase.php';
 require_once '../models/Categoria.php';
 
 $controller = new CategoriaController();
-/*
+
+
 if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
     $action = $_GET['action'];
 
@@ -17,7 +18,7 @@ if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
 } else {
     echo "Acción no válida o método no encontrado.";
 }
-*/
+
 /*
 
 if (isset($_GET['action']) && $_GET['action'] == 'insertarCategoria') {
@@ -55,8 +56,8 @@ class CategoriaController {
 
             if($this->categoria->insertarCategoria()) {
                 //echo "Categoria creada con exito";
-                //header ("Location: http://localhost/Grupo2_SC-504_VT_ProyectoFinal/views/viewCategoria.php");
-                echo "<script>window.location.href = 'index.php?controller=Categoria&action=list';</script>";
+                header ("Location: /views/viewCategoria.php");
+                //echo "<script>window.location.href = 'index.php?controller=Categoria&action=list';</script>";
             }else {
                 echo "Hubo un error al crear la categoría.";
             }
@@ -83,8 +84,9 @@ class CategoriaController {
 
 //Ejecutar el metodo verCategoria
 
-$controller = new CategoriaController();
+//$controller = new CategoriaController();
 //$id_categoria = 6;  
-$controller->verTodasCategorias();
+//$controller->verTodasCategorias();
+
 
 ?>

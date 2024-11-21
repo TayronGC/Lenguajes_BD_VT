@@ -31,7 +31,7 @@ class InicioSessionController {
                             $_SESSION['user_id'] = $this->persona->id_persona;
                             $_SESSION['role_id'] = $this->persona->id_rol;
                             //$message =  $_SESSION['user_id'];
-                            header("Location: /index.php");
+                            header("Location: /views/dashboard.php");
                         }else{
                             $message = "Datos incorrectos";
                         }
