@@ -16,6 +16,7 @@
         <li><a href="/views/ViewAllCategorias.php" class="hover:text-gray-300">Categorías</a></li>
         <li><a href="/views/viewCategoria.php" class="hover:text-gray-300">Buscar</a></li>
         <li><a href="/views/register.php" class="hover:text-gray-300">Registrate</a></li>
+        <li><a href="/views/dashboard.php" class="hover:text-gray-300">Pagina Principal</a></li>
       </ul>
     </nav>
   </header>
@@ -78,9 +79,9 @@ if (class_exists($controller)) {
     if (method_exists($controllerInstance, $action)) {
         $controllerInstance->$action();
     } else {
-        echo "La acción '$action' no existe en el controlador '$controller'.";
+        //echo "La acción '$action' no existe en el controlador '$controller'.";
     }
 } else {
-    echo "El controlador '$controller' no existe.";
+    //echo "El controlador '$controller' no existe.";
 }
 ?>
