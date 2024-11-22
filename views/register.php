@@ -107,7 +107,7 @@
 
             <div class="text-center pt-3">
                 <p class="mb-0">¿Ya tienes una cuenta?</p>
-                <a href="index.php?controller=Usuario&action=login" class="text-primary text-decoration-none font-weight-bold">Inicia Sesión</a>
+                <a href="../views/login.php" class="text-primary text-decoration-none font-weight-bold">Inicia Sesión</a>
             </div>
         </div>
     </section>

@@ -30,6 +30,8 @@
     <link href="../public/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
@@ -41,8 +43,8 @@
     <div class="hero_area">
         <!-- header section strats -->
         <header class="header_section">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <div class="container-fluid bg-green-500">
+                <nav class="navbar navbar-expand-lg custom_nav-container">
                     <a class="navbar-brand" href="index.php?controller=Dashboard&action=index">
                         <span>
                             Macro Salud
@@ -235,8 +237,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 px-0">
-                    <div class="img-box">
-                        <img src="Images/contact-img.jpg" alt="">
+                    <div class="img-box d-flex justify-content-center">
+                        <img src="../public/img/macrologo.jpg" style="max-width:400px" alt="">
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6">

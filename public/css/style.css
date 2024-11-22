@@ -110,7 +110,7 @@ html {
   margin: 10px 30px;
   padding: 0;
   padding-bottom: 3px;
-  color: #000000;
+  color: #fff;
   text-align: center;
   position: relative;
   text-transform: uppercase;
@@ -191,7 +191,7 @@ a:focus {
   font-size: 22px;
   text-transform: uppercase;
   font-weight: bold;
-  color: #000000;
+  color: #fff;
   position: relative;
   z-index: 3;
 }
