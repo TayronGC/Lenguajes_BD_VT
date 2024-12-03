@@ -236,7 +236,7 @@
             <div class="row">
                 <div class="col-md-6 px-0">
                     <div class="img-box">
-                        <img src="Images/contact-img.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6">

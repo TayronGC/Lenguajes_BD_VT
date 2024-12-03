@@ -34,7 +34,7 @@
 
             <div class="text-center pt-3">
                 <p class="mb-0">¿No tienes una cuenta?</p>
-                <a href="index.php?controller=Usuario&action=register" class="text-primary text-decoration-none font-weight-bold">Regístrate</a>
+                <a href="/views/register.php" class="text-primary text-decoration-none font-weight-bold">Regístrate</a>
             </div>
         </div>
     </section>
