@@ -27,7 +27,7 @@
                 </ul>
             </nav>
             <div class="socials-1">
-                <a target="_blank" href="https://www.instagram.com/macrosalud/"><img src="/public/img/r1.svg" alt=""></a>
+                <a target="_blank" href="https://www.instagram.com/_macrosalud_/"><img src="/public/img/r1.svg" alt=""></a>
                 <a href="#form"><img src="/public/img/r2.svg" alt=""></a>
                 <a target="_blank" href="https://www.facebook.com/share/p/15DTKFsLLT/"><img src="/public/img/r3.svg" alt=""></a>
             </div>
