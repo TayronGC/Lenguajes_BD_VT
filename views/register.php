@@ -14,7 +14,7 @@
     <section class="d-flex align-items-center justify-content-center min-vh-100">
         <div class="card bg-dark text-light p-4 shadow-lg" style="max-width: 400px; width: 100%; border-radius: 10px;">
             <div class="text-center mb-4">
-                <img src="../public/img/macrologo.jpg" class="img-fluid rounded-circle" style="max-width: 150px;" alt="Logo">
+                <img src="../public/img/macrologo.png" class="img-fluid rounded-circle" style="max-width: 150px;" alt="Logo">
             </div>
             <h1 class="font-weight-bold text-center mb-4">Bienvenido, Regístrate</h1>
             <?php if (!empty($message)): ?>

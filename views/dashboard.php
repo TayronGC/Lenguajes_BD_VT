@@ -24,6 +24,9 @@
             <nav class="navbar">
                 <ul>
                     <li><a href="/views/login.php">Inicio de Sesion</a></li>
+                    <li><a href="/views/ProductosCliente.php">Productos</a></li>
+                    <li><a href="/views/PromocionesCliente.php">Promociones</a></li>
+                    <li><a href="/views/carrito.php">Carrito</a></li>
                 </ul>
             </nav>
             <div class="socials-1">
