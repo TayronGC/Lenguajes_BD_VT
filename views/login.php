@@ -5,39 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="../public/css/Styles.css">
+    <link rel="stylesheet" href="../public/css/styles_aut.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-black">
+<body>
 
-    <section class="d-flex align-items-center justify-content-center min-vh-100">
-        <div class="card bg-dark text-light p-4 shadow-lg" style="max-width: 400px; width: 100%; border-radius: 10px;">
-            <div class="text-center mb-4">
-                <img src="../public/img/macrologo.png" class="img-fluid rounded-circle" style="max-width: 150px;" alt="Logo">
-            </div>
-            <h1 class="font-weight-bold text-center mb-4">Bienvenido, Inicia Sesión</h1>
-            <?php if (!empty($message)): ?>
-            <p class="alert alert-warning"><?= $message; ?></p>
-            <?php endif; ?>
-            <form action="../controllers/IniciarSessionController.php" method="POST">
-                <div class="mb-3">
-                    <label for="nombre_usuario" class="form-label">Nombre de Usuario:</label>
-                    <input type="text" class="form-control bg-dark text-light border-1" placeholder="Ingrese su usuario" id="nombre_usuario" name="nombre_usuario" >
+    <div class="wrapper">
+        <div class="container main">
+            <div class="row">
+                <!-- Imagen lateral -->
+                <div class="col-md-6 side-image">
+                <!--<img src="/public/img/logotipo_con_fondo.png" alt="Logo Macro" class="img-fluid" />-->
                 </div>
-                <div class="mb-3">
-                    <label for="contrasena" class="form-label">Contraseña:</label>
-                    <input type="password" class="form-control bg-dark text-light border-1" placeholder="Ingrese su contraseña" id="contrasena" name="contrasena" >
-                </div>
-                <button type="submit" class="btn btn-primary w-100" name="IniciarSesion" values="IniciarSesion">Iniciar Sesión</button>
-            </form>
 
-            <div class="text-center pt-3">
-                <p class="mb-0">¿No tienes una cuenta?</p>
-                <a href="/views/register.php" class="text-primary text-decoration-none font-weight-bold">Regístrate</a>
+                <!-- Formulario de inicio de sesión -->
+                <div class="col-md-6 right">
+                    <div class="input-box">
+                        <header>Iniciar sesión</header>
+
+                        <!-- Mensaje de error PHP -->
+                        <?php if (!empty($error)) { ?>
+                            <div class="alert alert-danger text-center" role="alert">
+                                <?php echo $error; ?>
+                            </div>
+                        <?php } ?>
+
+                        <form action="login.php" method="POST">
+                            <div class="input-field">
+                                <input type="text" class="input" id="nombre_usuario" name="nombre_usuario" required autocomplete="off">
+                                <label for="nombre_usuario">Nombre de Usuario</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="password" class="input" id="contrasena" name="contrasena" required>
+                                <label for="contrasena">Contraseña</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="submit" class="submit" value="Iniciar">
+                            </div>
+                        </form>
+
+                        <div class="signin">
+                            <span>¿No tienes una cuenta? <a href="register.php">Regístrate aquí</a></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -5,123 +5,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="../public/css/Styles.css">
+    <link rel="stylesheet" href="../public/css/styles_aut.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-black">
+<body>
 
-    <section class="d-flex align-items-center justify-content-center min-vh-100">
-        <div class="card bg-dark text-light p-4 shadow-lg" style="max-width: 400px; width: 100%; border-radius: 10px;">
-            <div class="text-center mb-4">
-                <img src="../public/img/macrologo.png" class="img-fluid rounded-circle" style="max-width: 150px;" alt="Logo">
-            </div>
-            <h1 class="font-weight-bold text-center mb-4">Bienvenido, Regístrate</h1>
-            <?php if (!empty($message)): ?>
-            <p class="alert alert-warning"><?= $message; ?></p>
-            <?php endif; ?>
-            <form action="../controllers/RegistroController.php" method="POST">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre:</label>
-                    <input type="text" class="form-control bg-dark text-light border-1" placeholder="Ingrese Nombre" id="nombre" name="nombre" >
-                </div>
-                <div class="mb-3">
-                    <label for="apellido1" class="form-label">Apellido 1:</label>
-                    <input type="text" class="form-control bg-dark text-light border-1" placeholder="Ingrese su Apellido1" id="apellido1" name="apellido1" >
-                </div>
-                <div class="mb-3">
-                    <label for="apellido2" class="form-label">Apellido 2:</label>
-                    <input type="text" class="form-control bg-dark text-light border-1" placeholder="Ingrese su Apellido2" id="apellido2" name="apellido2" >
-                </div>
-                <div class="mb-3">
-                    <label for="correo" class="form-label">Correo Electrónico:</label>
-                    <input type="email" class="form-control bg-dark text-light border-1" placeholder="Ingrese su Email" id="correo" name="correo" >
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="direccion_pais" class="form-label">Pais:</label>
-                        <select class="form-select bg-dark text-light" aria-label="Default select example" name="direccion_pais" id="direccion_pais">
-                        <option selected>Open this select menu</option>
-                        <option value="1">Argentina</option>
-                        <option value="2">Costa Rica</option>
-                        <option value="3">Estados Unidos</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="direccion_provincia" class="form-label">Provincia:</label>
-                        <select class="form-select bg-dark text-light" aria-label="Default select example" name="direccion_provincia" id="direccion_provincia">
-                        <option selected>Selecciona la Provincia</option>
-                        <option value="1">San José</option>
-                        <option value="2">Alajuela</option>
-                        <option value="3">Cartago</option>
-                        <option value="4">Heredia</option>
-                        <option value="5">Guanacaste</option>
-                        <option value="6">Puntarenas</option>
-                        <option value="7">Limón</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mb-3 d-flex gap-3">
-                    <div>
-                        <label for="direccion_canton" class="form-label">Cantón:</label>
-                        <select class="form-select bg-dark text-light" name="direccion_canton" id="direccion_canton">
-                            <option selected>Open this select menu</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="otro">Otro</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="direccion_distrito" class="form-label">Distrito:</label>
-                        <select class="form-select bg-dark text-light" name="direccion_distrito" id="direccion_distrito">
-                            <option selected>Open this select menu</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mb-3" id="cantonCustom" style="display:none;">
-    <label for="canton_especifico" class="form-label">Especifique el cantón:</label>
-    <input type="text" id="canton_especifico" class="form-control" name="canton_especifico">
-</div>
-                <div class="mb-3">
-                    <label for="telefono" class="form-label">Teléfono:</label>
-                    <input type="tel" pattern:"[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control bg-dark text-light border-1" placeholder="Ingrese su numero de telefono" id="telefono" name="telefono" >
-                </div>
-                <div class="mb-3">
-                    <label for="direccion" class="form-label">Direccion:</label>
-                    <input type="text" class="form-control bg-dark text-light border-1" placeholder="Ingrese su direccion" id="direccion" name="direccion">
-                </div>
-                <div class="mb-3">
-                    <label for="nombre_usuario" class="form-label">Nombre de Usuario:</label>
-                    <input type="text" class="form-control bg-dark text-light border-1" placeholder="Ingrese su usuario" id="nombre_usuario" name="nombre_usuario" >
-                </div>
-                <div class="mb-3">
-                    <label for="contrasena" class="form-label">Contraseña:</label>
-                    <input type="password" class="form-control bg-dark text-light border-1" placeholder="Ingrese su contraseña" id="contrasena" name="contrasena" >
-                </div>
-                <button type="submit" class="btn btn-primary w-100" name="Registro" value="Registrar">Registrar</button>
-            </form>
+    <div class="wrapper">
+        <div class="container main">
+            <div class="row">
+                <!-- Imagen lateral -->
+                <div class="col-md-6 side-image">
 
-            <div class="text-center pt-3">
-                <p class="mb-0">¿Ya tienes una cuenta?</p>
-                <a href="index.php?controller=Usuario&action=login" class="text-primary text-decoration-none font-weight-bold">Inicia Sesión</a>
+                </div>
+
+                <!-- Formulario de registro -->
+                <div class="col-md-6 right">
+                    <div class="input-box">
+                        <header>Bienvenido, Regístrate</header>
+
+                        <?php if (!empty($message)): ?>
+                            <div class="alert alert-warning text-center" role="alert">
+                                <?= $message; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <form action="../controllers/RegistroController.php" method="POST">
+                            <div class="input-field">
+                                <input type="text" class="input" id="nombre" name="nombre" required autocomplete="off">
+                                <label for="nombre">Nombre</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" class="input" id="apellido1" name="apellido1" required>
+                                <label for="apellido1">Apellido 1</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" class="input" id="apellido2" name="apellido2" required>
+                                <label for="apellido2">Apellido 2</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="email" class="input" id="correo" name="correo" required>
+                                <label for="correo">Correo Electrónico</label>
+                            </div>
+                            <div class="input-field">
+                                <select class="input" name="direccion_pais" id="direccion_pais" required>
+                                    <option value="" disabled selected>Selecciona el país</option>
+                                    <option value="1">Argentina</option>
+                                    <option value="2">Costa Rica</option>
+                                    <option value="3">Estados Unidos</option>
+                                </select>
+                                <label for="direccion_pais">País</label>
+                            </div>
+                            <div class="input-field">
+                                <select class="input" name="direccion_provincia" id="direccion_provincia" required>
+                                    <option value="" disabled selected>Selecciona la provincia</option>
+                                    <option value="1">San José</option>
+                                    <option value="2">Alajuela</option>
+                                    <option value="3">Cartago</option>
+                                </select>
+                                <label for="direccion_provincia">Provincia</label>
+                            </div>
+                            <div class="input-field">
+                                <select class="input" name="direccion_canton" id="direccion_canton" required>
+                                    <option value="" disabled selected>Selecciona el cantón</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <label for="direccion_canton">Cantón</label>
+                            </div>
+                            <div class="input-field" id="cantonCustom" style="display:none;">
+                                <input type="text" class="input" id="canton_especifico" name="canton_especifico" placeholder="Especifique el cantón">
+                            </div>
+                            <div class="input-field">
+                                <input type="tel" class="input" id="telefono" name="telefono" required placeholder="Ingrese su número de teléfono">
+                                <label for="telefono">Teléfono</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" class="input" id="direccion" name="direccion" required>
+                                <label for="direccion">Dirección</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" class="input" id="nombre_usuario" name="nombre_usuario" required autocomplete="off">
+                                <label for="nombre_usuario">Nombre de Usuario</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="password" class="input" id="contrasena" name="contrasena" required>
+                                <label for="contrasena">Contraseña</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="submit" class="submit" value="Registrar">
+                            </div>
+                        </form>
+
+                        <div class="signin">
+                            <span>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>document.getElementById('direccion_canton').addEventListener('change', function() {
-    const cantonCustom = document.getElementById('cantonCustom');
-    if (this.value === 'otro') {
-        cantonCustom.style.display = 'block';
-    } else {
-        cantonCustom.style.display = 'none';
-    }
-});</script>
+    <script>
+        document.getElementById('direccion_canton').addEventListener('change', function() {
+            const cantonCustom = document.getElementById('cantonCustom');
+            if (this.value === 'otro') {
+                cantonCustom.style.display = 'block';
+            } else {
+                cantonCustom.style.display = 'none';
+            }
+        });
+    </script>
+
 </body>
 
 </html>
