@@ -67,13 +67,13 @@ exit();
         <!-- Card para Productos -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Crear Productos</h3>
-          <a href="/views/CrearProducto.php" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
+          <a href="index.php?controller=Producto&action=insertarProductospage" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
 
         <!-- Card para Productos -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Ver y Editar Productos</h3>
-          <a href="/views/ViewAllProductosAdmin.php" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
+          <a href="index.php?controller=Producto&action=verTodosProductos" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
 
         <!-- Card para Promociones -->
@@ -85,12 +85,12 @@ exit();
         <!-- Card para Proveedores -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Proveedores</h3>
-          <a href="/views/CrearProveedor.php" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
+          <a href="index.php?controller=Proveedores&action=insertarProveedorpage" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
         <!-- Card para Proveedores -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Ver y Editar Proveedores</h3>
-          <a href="/views/VerProveedores.php" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
+          <a href="index.php?controller=Proveedores&action=verTodosProveedores" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
 
         <!-- Card para Categorías -->

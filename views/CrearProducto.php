@@ -18,7 +18,7 @@
   <main class="bg-gray-100 py-12">
     <div class="container mx-auto">
       <h2 class="text-2xl font-bold mb-6 text-center">Crear Producto</h2>
-      <form action="/productos/guardar" method="POST" class="bg-white shadow-md rounded-lg p-6">
+      <form action="index.php?controller=Producto&action=insertarProducto" method="POST" class="bg-white shadow-md rounded-lg p-6">
         <div class="mb-4">
           <label for="nombreProducto" class="block text-sm font-medium text-gray-700">Nombre Producto</label>
           <input type="text" id="nombreProducto" name="nombreProducto" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
@@ -37,17 +37,17 @@
         </div>
         <div class="mb-4">
           <label for="categoria" class="block text-sm font-medium text-gray-700">Categoría</label>
-          <select id="categoria" name="categoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <select id="categoria" name="categoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
           </select>
         </div>
         <div class="mb-4">
           <label for="proveedor" class="block text-sm font-medium text-gray-700">Proveedor</label>
-          <select id="proveedor" name="proveedor" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <select id="proveedor" name="proveedor" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
           </select>
         </div>
         <div class="mb-4">
           <label for="estado" class="block text-sm font-medium text-gray-700">Estado</label>
-          <select id="estado" name="estado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <select id="estado" name="estado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
           </select>
         </div>
         <div class="mb-4">

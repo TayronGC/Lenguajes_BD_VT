@@ -37,23 +37,28 @@
             <th class="py-3 px-6 text-left">Descripción</th>
             <th class="py-3 px-6 text-left">Precio</th>
             <th class="py-3 px-6 text-left">Proveedor</th>
-            <th class="py-3 px-6 text-left">Acción</th>
             <th class="py-3 px-6 text-center">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="border-b">
-            <td class="py-3 px-6">1</td>
-            <td class="py-3 px-6">Producto A</td>
-            <td class="py-3 px-6">Descripción del Producto A</td>
-            <td class="py-3 px-6">15.99</td>
-            <td class="py-3 px-6">Proveedor A</td>
-            <td class="py-3 px-6">Nuevo Producto</td>
-            <td class="py-3 px-6 text-center">
-              <button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button> |
-              <button class="text-red-500 hover:underline" onclick="openDeleteModal()">Eliminar</button>
-            </td>
-          </tr>
+        <?php if (!empty($productos)) : ?>
+            <?php foreach ($productos as $producto): ?>
+            <tr class="border-b">
+              <td class="py-3 px-6"><?= $producto['ID_PRODUCTO'] ?></td>
+              <td class="py-3 px-6"><?= $producto['NOMBRE_PRODUCTO'] ?></td>
+              <td class="py-3 px-6"><?= $producto['DESCRIPCION'] ?></td>
+              <td class="py-3 px-6"><?= $producto['ID_PROVEEDOR'] ?></td>
+              <td class="py-3 px-6 text-center">
+                <button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button> |
+                <button class="text-red-500 hover:underline" onclick="openDeleteModal(<?= $producto['ID_PRODUCTO'] ?>, '<?= $producto['NOMBRE_PRODUCTO'] ?>')">Eliminar</button>
+              </td>
+            </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr class="border-b">
+              <td class="py-3 px-6">No se encontraron productos</td>
+            </tr>
+          <?php endif; ?>
         </tbody>
       </table>
     </div>
