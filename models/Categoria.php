@@ -5,6 +5,7 @@ class Categoria {
     public $id_categoria;
     public $nombre_categoria;
     public $descripcion;
+    public $id_estado;
 
     public function __construct($db) {
         $this->conn = $db;
@@ -150,6 +151,30 @@ class Categoria {
         }
             
             
+        }
+
+    
+        public function modificarCategoria(){
+            try {
+                $sp = 'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_CATEGORIA_TB_MODIFICAR_DATOS2_SP(:p_id_categoria,:p_nombre_categoria, :p_descripcion, :p_id_estado); END;';
+                $stid = oci_parse($this->conn,$sp);
+        
+                oci_bind_by_name($stid, ":p_id_categoria",$this->id_categoria);
+                oci_bind_by_name($stid, ":p_nombre_categoria",$this->nombre_categoria,100);
+                oci_bind_by_name($stid, ":p_descripcion",$this->descripcion,255);
+                oci_bind_by_name($stid, ":p_id_estado",$this->id_estado);
+        
+                if (oci_execute($stid)) {
+                    oci_free_statement($stid);
+                    return true;
+                } else {
+                    oci_free_statement($stid);
+                    return false;
+                }
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+                return false;
+            }
         }
     }
 

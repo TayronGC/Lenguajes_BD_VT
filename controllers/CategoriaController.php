@@ -99,6 +99,33 @@ class CategoriaController {
             echo "No se recibió el ID de la categoría.";
         } 
     }
+
+
+    public function modificarCategoria(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_categoria'])) {
+            $this->categoria->id_categoria = $_POST['id_categoria'];
+            $this->categoria->nombre_categoria = $_POST['nombre_categoria'];
+            $this->categoria->descripcion = $_POST['descripcion'];
+            $this->categoria->id_estado = $_POST['id_estado'];
+
+            if ($this->categoria->id_estado !== '1' && $this->categoria->id_estado !== '2') {
+                echo "Error: El estado proporcionado no es válido.";
+                return;
+            }
+
+            if($this->categoria->modificarCategoria()) {
+                //echo "Categoria creada con exito";
+                header ("Location: index.php?controller=Categoria&action=verTodasCategorias");
+                exit(); 
+                //echo "<script>window.location.href = 'index.php?controller=Categoria&action=list';</script>";
+            }else {
+                echo "Hubo un error al modificar la categoría.";
+            }
+    
+        } else{
+            echo "No se recibió el ID de la categoría.";
+        }
+    }
 }
 
 

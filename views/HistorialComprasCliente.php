@@ -54,7 +54,7 @@
             <td class="py-3 px-6">2024-12-10 10:00:00</td>
             <td class="py-3 px-6">Venta Realizada</td>
             <td class="py-3 px-6 text-center">
-              <button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button> |
+              <!--<button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button>--> |
               <a href="#" class="text-red-500 hover:underline">Eliminar</a>
             </td>
           </tr>

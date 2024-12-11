@@ -31,7 +31,7 @@
                             </div>
                         <?php } ?>
 
-                        <form action="login.php" method="POST">
+                        <form action="../controllers/IniciarSessionController.php" method="POST">
                             <div class="input-field">
                                 <input type="text" class="input" id="nombre_usuario" name="nombre_usuario" required autocomplete="off">
                                 <label for="nombre_usuario">Nombre de Usuario</label>

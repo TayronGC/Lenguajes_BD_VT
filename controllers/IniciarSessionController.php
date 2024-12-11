@@ -32,10 +32,13 @@ class InicioSessionController {
                             $_SESSION['role_id'] = $this->persona->id_rol;
                             //$message =  $_SESSION['user_id'];
                             header("Location: /views/dashboard.php");
+                            echo  "Logeado";
                         }else{
+                            echo  "datos incorrectos";
                             $message = "Datos incorrectos";
                         }
                     }else{
+                        echo  "datos incorrectos";
                         $message = "Datos incorrectos";
                     }
 
@@ -73,7 +76,10 @@ class InicioSessionController {
                     } */
                 //}
             }
+        }else{
+            echo  "datos incorrectos";
         }
+
         include "../views/login.php";
     }
 
