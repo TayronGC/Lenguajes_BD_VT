@@ -1,3 +1,37 @@
+<?php
+// Cargar los modelos y controladores automáticamente
+spl_autoload_register(function ($class) {
+  if (file_exists('controllers/' . $class . '.php')) {
+    require_once 'controllers/' . $class . '.php';
+  } elseif (file_exists('models/' . $class . '.php')) {
+    require_once 'models/' . $class . '.php';
+  }
+});
+
+// Conectar con la base de datos
+require_once 'models/Database.php';
+$database = new Database();
+$db = $database->getConnection();
+
+// Obtener el controlador y la acción desde la URL
+$controller = isset($_GET['controller']) ? ucfirst($_GET['controller']) . 'Controller' : 'UsuarioController';
+$action = isset($_GET['action']) ? $_GET['action'] : 'login';
+
+// Instanciar el controlador y ejecutar la acción
+if (class_exists($controller)) {
+  $controllerInstance = new $controller($db);
+  if (method_exists($controllerInstance, $action)) {
+    $controllerInstance->$action();
+    //header("Location: AddCategoria.php");  // Redirige a la página de categorías
+    exit();
+exit();
+  } else {
+    echo "La acción '$action' no existe en el controlador '$controller'.";
+  }
+} else {
+  echo "El controlador '$controller' no existe.";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +96,7 @@
         <!-- Card para Categorías -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Categorías</h3>
-          <a href="/views/AddCategoria.php" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
+          <a href="index.php?controller=Categoria&action=verTodasCategorias" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
 
         <!-- Card para Facturación -->
@@ -103,34 +137,3 @@
 
 
 
-<?php
-// Cargar los modelos y controladores automáticamente
-spl_autoload_register(function ($class) {
-  if (file_exists('controllers/' . $class . '.php')) {
-    require_once 'controllers/' . $class . '.php';
-  } elseif (file_exists('models/' . $class . '.php')) {
-    require_once 'models/' . $class . '.php';
-  }
-});
-
-// Conectar con la base de datos
-require_once 'models/Database.php';
-$database = new Database();
-$db = $database->getConnection();
-
-// Obtener el controlador y la acción desde la URL
-$controller = isset($_GET['controller']) ? ucfirst($_GET['controller']) . 'Controller' : 'UsuarioController';
-$action = isset($_GET['action']) ? $_GET['action'] : 'login';
-
-// Instanciar el controlador y ejecutar la acción
-if (class_exists($controller)) {
-  $controllerInstance = new $controller($db);
-  if (method_exists($controllerInstance, $action)) {
-    $controllerInstance->$action();
-  } else {
-    //echo "La acción '$action' no existe en el controlador '$controller'.";
-  }
-} else {
-  //echo "El controlador '$controller' no existe.";
-}
-?>

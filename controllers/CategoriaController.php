@@ -1,10 +1,13 @@
 <?php
-require_once '../models/DataBase.php';
-require_once '../models/Categoria.php';
+//require_once '../models/DataBase.php';
+//require_once '../models/Categoria.php';
 
-$controller = new CategoriaController();
+require_once 'models/DataBase.php';
+require_once 'models/Categoria.php';
 
+//$controller = new CategoriaController();
 
+/*
 if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
     $action = $_GET['action'];
 
@@ -18,7 +21,7 @@ if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
 } else {
     echo "Acción no válida o método no encontrado.";
 }
-
+*/
 /*
 
 if (isset($_GET['action']) && $_GET['action'] == 'insertarCategoria') {
@@ -56,7 +59,7 @@ class CategoriaController {
 
             if($this->categoria->insertarCategoria()) {
                 //echo "Categoria creada con exito";
-                header ("Location: /views/viewCategoria.php");
+                header ("Location: index.php?controller=Categoria&action=verTodasCategorias");
                 //echo "<script>window.location.href = 'index.php?controller=Categoria&action=list';</script>";
             }else {
                 echo "Hubo un error al crear la categoría.";
@@ -68,7 +71,7 @@ class CategoriaController {
     public function verTodasCategorias(){
         $categorias = $this->categoria->verTodasCategorias();
         if(!empty($categorias)){
-            include '../views/ViewAllCategorias.php';
+            include 'views/AddCategoria.php';
             //var_dump($categorias); // Muestra el contenido de $categorias
             //return $categorias;
         }else{
@@ -77,6 +80,24 @@ class CategoriaController {
         }
         //var_dump($categorias); // Muestra el contenido de $categorias
         
+    }
+
+    public function inactivarCategoria(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_categoria'])) {
+            $this->categoria->id_categoria = $_POST['id_categoria'];
+
+            if($this->categoria->inactivarCategoria()) {
+                //echo "Categoria creada con exito";
+                header ("Location: index.php?controller=Categoria&action=verTodasCategorias");
+                exit(); 
+                //echo "<script>window.location.href = 'index.php?controller=Categoria&action=list';</script>";
+            }else {
+                echo "Hubo un error al inactivar la categoría.";
+            }
+    
+        } else{
+            echo "No se recibió el ID de la categoría.";
+        } 
     }
 }
 

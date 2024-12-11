@@ -18,9 +18,9 @@ class Database {
         // Verificar si la conexión fue exitosa
         if (!$this->conn) {
             $e = oci_error();
-            echo "Error de conexión: " . $e['message'];
+            //echo "Error de conexión: " . $e['message'];
         } else {
-            echo "Conexión exitosa a Oracle" . "<br>";
+            //echo "Conexión exitosa a Oracle" . "<br>";
         }
     }
 

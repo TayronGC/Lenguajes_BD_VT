@@ -40,15 +40,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="border-b">
-            <td class="py-3 px-6">1</td>
-            <td class="py-3 px-6">Categoría A</td>
-            <td class="py-3 px-6">Descripción de la categoría A</td>
-            <td class="py-3 px-6 text-center">
-              <button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button> |
-              <button class="text-red-500 hover:underline" onclick="openDeleteModal()">Eliminar</button>
-            </td>
-          </tr>
+          <?php if (!empty($categorias)) : ?>
+            <?php foreach ($categorias as $categoria): ?>
+            <tr class="border-b">
+              <td class="py-3 px-6"><?= $categoria['ID_CATEGORIA'] ?></td>
+              <td class="py-3 px-6"><?= $categoria['NOMBRE_CATEGORIA'] ?></td>
+              <td class="py-3 px-6"><?= $categoria['DESCRIPCION'] ?></td>
+              <td class="py-3 px-6 text-center">
+                <button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button> |
+                <button class="text-red-500 hover:underline" onclick="openDeleteModal(<?= $categoria['ID_CATEGORIA'] ?>, '<?= $categoria['NOMBRE_CATEGORIA'] ?>')">Eliminar</button>
+              </td>
+            </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr class="border-b">
+              <td class="py-3 px-6">No se encontraron categorías</td>
+            </tr>
+          <?php endif; ?>
         </tbody>
       </table>
 
@@ -61,14 +69,14 @@
   <div id="addModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
     <div class="bg-white rounded-lg w-1/3 p-6">
       <h3 class="text-xl font-semibold mb-4">Agregar Nueva Categoría</h3>
-      <form>
+      <form action="index.php?controller=Categoria&action=insertarCategoria" method="post">
         <div class="mb-4">
           <label for="nombreCategoria" class="block text-sm font-medium text-gray-700">Nombre Categoría</label>
-          <input type="text" id="nombreCategoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <input type="text" id="nombreCategoria" name="nombre_categoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
         </div>
         <div class="mb-4">
           <label for="descripcionCategoria" class="block text-sm font-medium text-gray-700">Descripción</label>
-          <input type="text" id="descripcionCategoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <input type="text" id="descripcionCategoria" name="descripcion" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
         </div>
         <div class="mb-4">
           <label for="estadoCategoria" class="block text-sm font-medium text-gray-700">Estado</label>
@@ -114,12 +122,16 @@
 
   <div id="deleteModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
     <div class="bg-white rounded-lg w-1/3 p-6">
+    <form action="index.php?controller=Categoria&action=inactivarCategoria" method="post">
       <h3 class="text-xl font-semibold mb-4">Eliminar Categoría</h3>
       <p class="mb-4">¿Estás seguro de que deseas eliminar esta categoría?</p>
+        <input type="hidden" id="deleteCategoryId" name="id_categoria" value="">
+        <p id="categoryName" class="text-lg font-medium mb-4"></p>
       <div class="flex justify-end space-x-4">
         <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="closeDeleteModal()">Cancelar</button>
-        <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md">Eliminar</button>
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Eliminar</button>
       </div>
+    </form>
     </div>
   </div>
 
@@ -146,8 +158,13 @@
       document.getElementById('editModal').classList.add('hidden');
     }
 
-    function openDeleteModal() {
+    function openDeleteModal(categoryId, categoryName) {
+      document.getElementById('deleteCategoryId').value = categoryId;
+      //console.log('Eliminar ', categoryId);
+      document.getElementById('categoryName').innerText = categoryName;
+      
       document.getElementById('deleteModal').classList.remove('hidden');
+
     }
 
     function closeDeleteModal() {
