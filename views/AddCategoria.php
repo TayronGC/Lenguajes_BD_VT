@@ -36,6 +36,7 @@
             <th class="py-3 px-6 text-left">ID Categoría</th>
             <th class="py-3 px-6 text-left">Nombre Categoría</th>
             <th class="py-3 px-6 text-left">Descripción</th>
+            <th style="display:none;" class="py-3 px-6 text-left">ESTADO</th>
             <th class="py-3 px-6 text-center">Acciones</th>
           </tr>
         </thead>
@@ -46,8 +47,9 @@
               <td class="py-3 px-6"><?= $categoria['ID_CATEGORIA'] ?></td>
               <td class="py-3 px-6"><?= $categoria['NOMBRE_CATEGORIA'] ?></td>
               <td class="py-3 px-6"><?= $categoria['DESCRIPCION'] ?></td>
+              <td style="display:none;" class="py-3 px-6"><?= $categoria['ID_ESTADO'] ?></td>
               <td class="py-3 px-6 text-center">
-                <button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button> |
+                <button class="text-blue-500 hover:underline" onclick="openEditModal(<?= $categoria['ID_CATEGORIA'] ?>, '<?= $categoria['NOMBRE_CATEGORIA'] ?>', '<?= $categoria['DESCRIPCION'] ?>', <?= $categoria['ID_ESTADO'] ?>)">Editar</button> |
                 <button class="text-red-500 hover:underline" onclick="openDeleteModal(<?= $categoria['ID_CATEGORIA'] ?>, '<?= $categoria['NOMBRE_CATEGORIA'] ?>')">Eliminar</button>
               </td>
             </tr>
@@ -96,18 +98,20 @@
   <div id="editModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
     <div class="bg-white rounded-lg w-1/3 p-6">
       <h3 class="text-xl font-semibold mb-4">Editar Categoría</h3>
-      <form>
+      <form action="index.php?controller=Categoria&action=modificarCategoria" method="post">
+      <input type="hidden" id="editCategoryId" name="id_categoria" value="">
         <div class="mb-4">
           <label for="editNombreCategoria" class="block text-sm font-medium text-gray-700">Nombre Categoría</label>
-          <input type="text" id="editNombreCategoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" value="Categoría A">
+          <input type="text" id="editNombreCategoria" name="nombre_categoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" value="">
         </div>
         <div class="mb-4">
           <label for="editDescripcionCategoria" class="block text-sm font-medium text-gray-700">Descripción</label>
-          <input type="text" id="editDescripcionCategoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" value="Descripción de la categoría A">
+          <input type="text" id="editDescripcionCategoria" name="descripcion" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" value="">
         </div>
         <div class="mb-4">
           <label for="editEstadoCategoria" class="block text-sm font-medium text-gray-700">Estado</label>
-          <select id="editEstadoCategoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+          <!--<input id="editIdEstado" name="id_estado" value="">-->
+          <select id="editEstadoCategoria" name="id_estado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
             <option value="1">Activo</option>
             <option value="2">Inactivo</option>
           </select>
@@ -150,7 +154,14 @@
       document.getElementById('addModal').classList.add('hidden');
     }
 
-    function openEditModal() {
+    function openEditModal(categoryId, categoryName, categoryDescripcion,idEstado) {
+      document.getElementById('editCategoryId').value = categoryId;
+      document.getElementById('editNombreCategoria').value = categoryName;
+      document.getElementById('editDescripcionCategoria').value = categoryDescripcion;
+      //document.getElementById('editIdEstado').value = idEstado;
+      document.getElementById('editEstadoCategoria').value = idEstado;
+      //console.log('Eliminar ', categoryId);
+      //document.getElementById('categoryName').value = categoryName;
       document.getElementById('editModal').classList.remove('hidden');
     }
 
