@@ -1,16 +1,23 @@
 <?php
 require_once 'models/DataBase.php';
 require_once 'models/Producto.php';
+require_once 'models/Categoria.php';
+require_once 'models/Proveedores.php';
 
 class ProductoController {
     private $db;
     private $producto;
+    private $categoria;
+    private $proveedor;
 
     public function __construct() {
         $this->db = new Database();
         $this->db = $this->db->getConnection();
-
         $this->producto = new Producto($this->db);
+
+        //Relaciones
+        $this->categoria = new Categoria($this->db);
+        $this->proveedor = new Proveedores($this->db);
     }
 
     public function verProducto($id) {
@@ -42,14 +49,24 @@ class ProductoController {
             $this->producto->descripcion = $_POST['descripcion'];
             $this->producto->precio_unitario = $_POST['precioUnitario'];
             $this->producto->fecha_vencimiento = $_POST['fechaVencimiento'];
+            $this->producto->id_categoria = $_POST['categoria'];
+            $this->producto->id_proveedor = $_POST['proveedor'];
+
+            // $fechaConvertida= date('d-m-y', strtotime($this->producto->fecha_vencimiento));
+            
+            //$this->producto->fecha_vencimiento = $fechaConvertida;
+
+            //echo $this->producto->nombre_producto . "<br>";
+            //echo $this->producto->fecha_vencimiento . "<br>";
+            //echo "fecha convertida: " . $fechaConvertida;
             
 
             if($this->producto->insertarProducto()) {
-                echo "Categoria creada con exito";
-                //header ("Location: index.php?controller=Categoria&action=verTodosProductos");
-                //echo "<script>window.location.href = 'index.php?controller=Categoria&action=list';</script>";
+                //echo "Categoria creada con exito";
+                header ("Location: index.php?controller=Producto&action=insertarProductospage");
+                //echo "<script>window.location.href = 'index.php?controller=Producto&action=insertarProductospage';</script>";
             }else {
-                echo "Hubo un error al crear la categoría.";
+                echo "Hubo un error al crear el Producto.";
             }
     
         } else{
@@ -58,6 +75,8 @@ class ProductoController {
     }
 
     public function insertarProductospage(){
+        $categorias = $this->categoria->verTodasCategorias();
+        $proveedores = $this->proveedor->verTodosProveedores();
         include 'views/CrearProducto.php';
     }
 

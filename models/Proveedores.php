@@ -72,7 +72,7 @@ class Proveedores {
     public function verTodosProveedores() {
         $proveedores = [];
         try {
-            $sp = 'BEGIN FIDE_VER_TODOS_PROVEEDORES_SP(:p_cursor); END;';
+            $sp = 'BEGIN FIDE_PROVEEDOR_TB_VER_PROVEEDORES_SP(:p_cursor); END;';
             $stid = oci_parse($this->conn, $sp);
 
             $resultados = oci_new_cursor($this->conn);
