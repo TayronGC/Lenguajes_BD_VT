@@ -3,6 +3,7 @@
 class Promocion {
     private $conn;
     public $id_promocion;
+    public $id_producto;
     public $nombre_promocion;
     public $descripcion;
     public $fecha_inicio;
@@ -67,13 +68,15 @@ class Promocion {
 
     public function insertarPromocion() {
         try {
-            $stid = oci_parse($this->conn, 'BEGIN insertar_promocion(:p_nombre_promocion, :p_descripcion, :p_fecha_inicio, :p_fecha_fin, :p_descuento); END;');
+            $stid = oci_parse($this->conn, 'BEGIN insertar_promocion(:p_nombre_promocion, :p_descripcion, :p_fecha_inicio, :p_fecha_fin, :p_descuento,:p_id_producto); END;');
 
             oci_bind_by_name($stid, ":p_nombre_promocion", $this->nombre_promocion, 100);
             oci_bind_by_name($stid, ":p_descripcion", $this->descripcion, 255);
             oci_bind_by_name($stid, ":p_fecha_inicio", $this->fecha_inicio);
             oci_bind_by_name($stid, ":p_fecha_fin", $this->fecha_fin);
             oci_bind_by_name($stid, ":p_descuento", $this->descuento);
+            oci_bind_by_name($stid, ":p_id_producto", $this->id_producto);
+            
 
             if (oci_execute($stid)) {
                 oci_free_statement($stid);
@@ -94,6 +97,32 @@ class Promocion {
             $stid = oci_parse($this->conn, $sp);
     
             oci_bind_by_name($stid, ":p_id_promocion", $this->id_promocion);
+    
+            if (oci_execute($stid)) {
+                oci_free_statement($stid);
+                return true;
+            } else {
+                oci_free_statement($stid);
+                return false;
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function modificarPromocion(){
+        try {
+            $sp = 'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_CATEGORIA_TB_MODIFICAR_DATOS2_SP(:p_nombre_promocion, :p_descripcion, :p_fecha_inicio, :p_fecha_fin, :p_descuento, :p_id_producto,:p_id_estado); END;';
+            $stid = oci_parse($this->conn,$sp);
+    
+            oci_bind_by_name($stid, ":p_nombre_promocion", $this->nombre_promocion, 100);
+            oci_bind_by_name($stid, ":p_descripcion", $this->descripcion, 255);
+            oci_bind_by_name($stid, ":p_fecha_inicio", $this->fecha_inicio);
+            oci_bind_by_name($stid, ":p_fecha_fin", $this->fecha_fin);
+            oci_bind_by_name($stid, ":p_descuento", $this->descuento);
+            oci_bind_by_name($stid, ":p_id_estado", $this->id_estado);
+            oci_bind_by_name($stid, ":p_id_producto", $this->id_producto);
     
             if (oci_execute($stid)) {
                 oci_free_statement($stid);

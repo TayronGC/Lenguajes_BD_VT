@@ -3,17 +3,17 @@ require_once 'models/DataBase.php';
 require_once 'models/Promocion.php';
 
 class PromocionController {
-    private $conn;
+    private $db;
     private $promocion;
     private $usuario; 
 
-    public function __construct($usuario = 'SISTEMA') {
-        $database = new Database();
-        $this->conn = $database->conectar();
-        $this->promocion = new Promocion($this->conn);
-        $this->usuario = $usuario;
-    }
+    public function __construct() {
+        // Crear la conexión a la base de datos
+        $this->db = new Database();
+        $this->db = $this->db->getConnection();
 
+        $this->promocion = new Promocion($this->db);
+    }
     public function index() {
         $promociones = $this->promocion->verTodasPromociones();
         include '/views/promociones/listarPromociones.php';
@@ -29,18 +29,16 @@ class PromocionController {
             $this->promocion->fecha_inicio = $_POST['fecha_inicio'];
             $this->promocion->fecha_fin = $_POST['fecha_fin'];
             $this->promocion->descuento = $_POST['descuento'];
-            $this->promocion->id_promocion = $_POST['id_producto'];
-            $this->promocion->------= 'CREAR'; 
-            $this->promocion->id_estado = 1; 
+            $this->promocion->id_producto= $_POST['id_producto'];
 
             if ($this->promocion->insertarPromocion($this->usuario)) {
-                header('Location: index.php?controlador=promocion&accion=index');
+                header('Location: index.php?controlador=Promocion&accion=PromocionPage');
+
             } else {
                 echo "Error al crear la promoción";
             }
-        } else {
-            include '../views/promociones/crear.php';
-        }
+        } 
+            
     }
 
     public function modificar($id) {
@@ -51,11 +49,11 @@ class PromocionController {
             $this->promocion->fecha_fin = $_POST['fecha_fin'];
             $this->promocion->descuento = $_POST['descuento'];
             $this->promocion->id_producto = $_POST['id_producto'];
-            $this->promocion->accion = 'MODIFICAR';
             $this->promocion->id_estado = $_POST['id_estado'];
 
             if ($this->promocion->modificarPromocion($this->usuario)) {
-                header('Location: index.php?controlador=promocion&accion=index');
+                header('Location: index.php?controlador=Promocion&accion=PromocionPage');
+
             } else {
                 echo "Error al modificar la promoción";
             }
@@ -69,10 +67,15 @@ class PromocionController {
     public function inactivar($id) {
         $this->promocion->id_promocion = $id;
         if ($this->promocion->inactivarPromocion($this->usuario)) {
-            header('Location: index.php?controlador=promocion&accion=index');
+            header('Location: index.php?controlador=Promocion&accion=PromocionPage');
         } else {
             echo "Error al inactivar la promoción";
         }
+    }
+
+
+    public function PromocionPage(){
+        include 'views/CrearPromocion.php';
     }
 }
 ?>

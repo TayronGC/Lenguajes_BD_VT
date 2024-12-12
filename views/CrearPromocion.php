@@ -30,7 +30,7 @@
     <div class="container mx-auto">
 
       <h2 class="text-2xl font-bold mb-6 text-center">Crear/Editar Promoción</h2>
-      <form class="bg-white shadow-md rounded-lg p-6" action="/promociones/guardar" method="POST">
+      <form class="bg-white shadow-md rounded-lg p-6" action="index.php?controlador=Promocion&accion=crear" method="POST">
         <input type="hidden" name="idPromocion" value="">
         
         <div class="mb-4">
@@ -67,7 +67,7 @@
         </div>
 
         <div class="flex justify-end space-x-4">
-          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='/promociones.php'">Cancelar</button>
+          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='index.php?controlador=Promocion&accion=PromocionPage'">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Guardar Promoción</button>
         </div>
       </form>
