@@ -33,18 +33,25 @@
         </div>
         <div class="mb-4">
           <label for="fechaVencimiento" class="block text-sm font-medium text-gray-700">Fecha de Vencimiento</label>
-          <input type="date" id="fechaVencimiento" name="fechaVencimiento" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <input type="date" min="2024-12-14" id="fechaVencimiento" name="fechaVencimiento" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
         </div>
         <div class="mb-4">
           <label for="categoria" class="block text-sm font-medium text-gray-700">Categoría</label>
           <select id="categoria" name="categoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($categorias as $categoria): ?>
+              <option value="<?= $categoria['ID_CATEGORIA'] ?>"><?= $categoria['NOMBRE_CATEGORIA'] ?></option>
+            <?php endforeach; ?>
           </select>
         </div>
         <div class="mb-4">
           <label for="proveedor" class="block text-sm font-medium text-gray-700">Proveedor</label>
           <select id="proveedor" name="proveedor" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($proveedores as $proveedor): ?>
+              <option value="<?= $proveedor['ID_PROVEEDOR'] ?>"><?= $proveedor['NOMBRE_PROVEEDOR'] ?> <?= $proveedor['APELLIDO1'] ?></option>
+            <?php endforeach; ?>
           </select>
         </div>
+        <!--
         <div class="mb-4">
           <label for="estado" class="block text-sm font-medium text-gray-700">Estado</label>
           <select id="estado" name="estado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
@@ -54,8 +61,9 @@
           <label for="accion" class="block text-sm font-medium text-gray-700">Acción</label>
           <input type="text" id="accion" name="accion" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
         </div>
+            -->
         <div class="flex justify-end space-x-4">
-          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='/productos.php'">Cancelar</button>
+          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='index.php'">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Crear Producto</button>
         </div>
       </form>

@@ -72,7 +72,9 @@ class Producto {
     public function insertarProducto(){
         
         try {
-        $stid = oci_parse($this->conn,'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_PRODUCTO_TB_INSERTAR_DATOS_SP(:p_nombre_producto, :p_descripcion, :p_precio_unitario, :p_fecha_vencimiento, :p_id_categoria, :p_id_proveedor); END;');
+        $stid = oci_parse($this->conn,'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_PRODUCTO_TB_INSERTAR_DATOS_SP(:p_nombre_producto, :p_descripcion, :p_precio_unitario, TO_DATE(:p_fecha_vencimiento, \'DD-MM-YYYY\') , :p_id_categoria, :p_id_proveedor); END;');
+        //Para el formato de fecha
+        $this->fecha_vencimiento = date('d-m-Y'); 
 
         oci_bind_by_name($stid, ":p_nombre_producto",$this->nombre_producto,100);
         oci_bind_by_name($stid, ":p_descripcion",$this->descripcion,255);
@@ -80,6 +82,7 @@ class Producto {
         oci_bind_by_name($stid, ":p_fecha_vencimiento",$this->fecha_vencimiento);
         oci_bind_by_name($stid, ":p_id_categoria",$this->id_categoria);
         oci_bind_by_name($stid, ":p_id_proveedor",$this->id_proveedor);
+        
 
         if (oci_execute($stid)) {
             oci_free_statement($stid);

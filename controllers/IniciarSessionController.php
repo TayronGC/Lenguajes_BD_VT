@@ -30,9 +30,13 @@ class InicioSessionController {
                             session_start();
                             $_SESSION['user_id'] = $this->persona->id_persona;
                             $_SESSION['role_id'] = $this->persona->id_rol;
+                            echo "Persona_ID: ".$this->persona->id_persona;
+                            echo "Rol_ID: ". $this->persona->id_rol;
+
                             //$message =  $_SESSION['user_id'];
-                            header("Location: /views/dashboard.php");
-                            echo  "Logeado";
+                            //header("Location: /views/dashboard.php");
+                            //echo  $_SESSION['user_id'] . "<br>";
+                            //echo "rol".$_SESSION['role_id'];
                         }else{
                             echo  "datos incorrectos";
                             $message = "Datos incorrectos";
