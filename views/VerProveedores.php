@@ -135,7 +135,7 @@
 </html>
 
 <?php
-// Cerrar la conexión a la base de datos
+
 oci_free_statement($stid);
 oci_close($conn);
 ?>
