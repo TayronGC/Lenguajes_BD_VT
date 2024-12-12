@@ -1,9 +1,11 @@
 <?php
-require_once "../models/DataBase.php";
-require_once "../models/Persona.php";
+//require_once "../models/DataBase.php";
+//require_once "../models/Persona.php";
+require_once "models/DataBase.php";
+require_once "models/Persona.php";
 
 
-class InicioSessionController {
+class IniciarSessionController {
     private $db;
     private $persona;
 
@@ -30,13 +32,22 @@ class InicioSessionController {
                             session_start();
                             $_SESSION['user_id'] = $this->persona->id_persona;
                             $_SESSION['role_id'] = $this->persona->id_rol;
-                            echo "Persona_ID: ".$this->persona->id_persona;
-                            echo "Rol_ID: ". $this->persona->id_rol;
+                            //echo "Persona_ID: ".$this->persona->id_persona;
+                            //echo "Rol_ID: ". $this->persona->id_rol;
+                            if($_SESSION['role_id'] == 1){
+                                //echo "Admin";
+                                header("Location: index.php");
+                            }elseif($_SESSION['role_id'] == 2){
+                                //echo "Cliente";
+                                header("Location: index.php?controller=Dashboard&action=dashboardpage");
+                            }else{
+                                echo "Rol invalido";
+                            }
 
                             //$message =  $_SESSION['user_id'];
                             //header("Location: /views/dashboard.php");
-                            //echo  $_SESSION['user_id'] . "<br>";
-                            //echo "rol".$_SESSION['role_id'];
+                            echo  $_SESSION['user_id'] . "<br>";
+                            echo "rol".$_SESSION['role_id'];
                         }else{
                             echo  "datos incorrectos";
                             $message = "Datos incorrectos";
@@ -87,9 +98,26 @@ class InicioSessionController {
         include "../views/login.php";
     }
 
+
+    public function cerrarSession(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        session_start();
+        session_unset();
+        session_destroy();
+        header ("Location: index.php?controller=IniciarSession&action=loginPage");
+        exit;
+        }else{
+            echo "Error: método no permitido.";
+        }
+    }
+
+    public function loginPage(){
+        include "views/login.php";
+    }
+
 }
 
-$iniciarSession = new InicioSessionController;
-$iniciarSession->iniciarSesion();
+//$iniciarSession = new InicioSessionController;
+//$iniciarSession->iniciarSesion();
 
 ?>

@@ -31,6 +31,7 @@ exit();
 } else {
   echo "El controlador '$controller' no existe.";
 }
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +49,7 @@ exit();
       <a href="#" class="text-xl font-bold">Macrobiotica</a>
       <ul class="flex space-x-4">
         <li><a href="#" class="hover:text-gray-300">Inicio</a></li>
-        <li><a href="/views/dashboard.php" class="hover:text-gray-300">Página Principal Cliente</a></li>
+        <li><a href="index.php?controller=Dashboard&action=dashboardpage" class="hover:text-gray-300">Página Principal Cliente</a></li>
 
     </nav>
   </header>
@@ -65,15 +66,16 @@ exit();
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
         <!-- Card para Productos -->
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+         
+          <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Crear Productos</h3>
           <a href="index.php?controller=Producto&action=insertarProductospage" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
-
+        
         <!-- Card para Productos -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Ver y Editar Productos</h3>
-          <a href="index.php?controller=Promocion&action=index" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a> 
+          <a href="index.php?controller=Producto&action=verTodosproductos" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a> 
         </div>
 
         <!-- Card para Promociones -->
@@ -114,7 +116,7 @@ exit();
         <!-- Card para Pedidos -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Ver y Editar Pedidos</h3>
-          <a href="/views/VerPedidos.php" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
+          <a href="index.php?controller=IniciarSession&action=loginPage" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
 
         <!-- Card para Promociones -->

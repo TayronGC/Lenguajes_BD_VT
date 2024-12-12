@@ -1,3 +1,12 @@
+<?php
+session_start();
+if($_SESSION['role_id'] != 1){
+  header("Location: index.php?controller=Dashboard&action=dashboardpage");
+  exit();
+}
+//echo "Bienvenido, Usuario ID: " . $_SESSION['user_id'] . " y el rol " . $_SESSION['role_id'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

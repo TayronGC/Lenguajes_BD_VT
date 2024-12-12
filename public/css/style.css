@@ -440,3 +440,11 @@ position: relative;
     margin-bottom: 20px;
   }
 }
+
+.link-style {
+  background: none;
+  border: none;
+  color: #7c7c7c;
+  text-decoration: none;
+  cursor: pointer;
+}

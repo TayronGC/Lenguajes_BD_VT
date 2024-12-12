@@ -16,12 +16,12 @@ class Producto {
     }
 
     public function verProducto($id){
-        $stid = oci_parse($this->conn,'BEGIN ver_producto2(:p_id_producto,:p_nombre,:p_descripcion,:p_categoria,:p_estado); END;');
+        $stid = oci_parse($this->conn,'BEGIN ver_producto2(:p_id_producto,:p_nombre,:p_descripcion,:p_id_categoria,:p_estado); END;');
 
         oci_bind_by_name($stid,'p_id_producto',$id);
         oci_bind_by_name($stid,'p_nombre',$nombre_producto,100);
         oci_bind_by_name($stid,'p_descripcion',$descripcion,255);
-        oci_bind_by_name($stid,'p_categoria',$id_categoria,100);
+        oci_bind_by_name($stid,'p_id_categoria',$id_categoria,100);
         oci_bind_by_name($stid,'p_estado',$id_estado,100);
 
         oci_execute($stid);

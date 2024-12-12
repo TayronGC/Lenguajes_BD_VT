@@ -28,6 +28,8 @@ class ProductoController {
 
     public function verTodosproductos(){
         $productos = $this->producto->verTodosproductos();
+        $categorias = $this->categoria->verTodasCategorias();
+        $proveedores = $this->proveedor->verTodosProveedores();
         if(!empty($productos)){
             include 'views/ViewAllProductosAdmin.php';
             //var_dump($productos); // Muestra el contenido de $productos
@@ -86,7 +88,7 @@ class ProductoController {
 
             if($this->producto->inactivarproducto()) {
                 //echo "producto creada con exito";
-                header ("Location: index.php?controller=producto&action=verTodasproductos");
+                header ("Location: index.php?controller=Producto&action=verTodosproductos");
                 exit(); 
                 //echo "<script>window.location.href = 'index.php?controller=producto&action=list';</script>";
             }else {

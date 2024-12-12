@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +26,16 @@
 
             <nav class="navbar">
                 <ul>
-                    <li><a href="/views/login.php">Inicio de Sesion</a></li>
+                    <?php 
+                    
+                    if(!isset($_SESSION['user_id'])){ ?>
+
+                    <li><a href="index.php?controller=IniciarSession&action=loginPage">Inicio de Sesion</a></li>
+                    <?php }else{ ?>
+                    <li><form action="index.php?controller=IniciarSession&action=cerrarSession" method="post">
+                        <button type="submit" class="link-style">Cerrar Sesion</button>
+                    </form></li>
+                    <?php }?>
                     <li><a href="/views/ProductosCliente.php">Productos</a></li>
                     <li><a href="/views/PromocionesCliente.php">Promociones</a></li>
                     <li><a href="/views/carrito.php">Carrito</a></li>

@@ -20,8 +20,9 @@ class Persona {
     public function insertUsuario(){
         try {
             //Llamado al Procedimiento Almacenado
-            $sp='BEGIN FIDE_PERSONA_TB_INSERTAR_PERSONA_SP(:p_nombre, :p_apellido1,:p_apellido2, :p_correo,:p_telefono, :p_nombre_usuario, :p_contrasena); END;';
+            $sp='BEGIN FIDE_PERSONA_TB_INSERTAR_PERSONA_SP(:p_nombre, :p_apellido1,:p_apellido2, :p_correo,:p_telefono, :p_nombre_usuario, :p_contrasena, :p_id_rol); END;';
             $stid = oci_parse($this->conn,$sp);
+            $this->id_rol = 2;
     
             oci_bind_by_name($stid, ":p_nombre",$this->nombre,100);
             oci_bind_by_name($stid, ":p_apellido1",$this->apellido1,100);
@@ -30,6 +31,7 @@ class Persona {
             oci_bind_by_name($stid, ":p_telefono",$this->telefono,100);
             oci_bind_by_name($stid, ":p_nombre_usuario",$this->nombre_usuario,100);
             oci_bind_by_name($stid, ":p_contrasena",$this->contrasena,100);
+            oci_bind_by_name($stid, ":p_id_rol",$this->id_rol);
     
             if (oci_execute($stid)) {
                 oci_free_statement($stid);
@@ -154,6 +156,24 @@ class Persona {
             return false;
         }
     }
+        PROCEDURE FIDE_PERSONA_TB_OBTENER_USUARIO_SP(
+    P_NOMBRE_USUARIO IN VARCHAR2,
+    P_ID_PERSONA OUT NUMBER,
+    P_CONTRASENA OUT VARCHAR2,
+    P_ID_ROL OUT NUMBER
+)AS
+BEGIN
+    SELECT ID_PERSONA, CONTRASENA, ID_ROL 
+    INTO P_ID_PERSONA, P_CONTRASENA,P_ID_ROL
+    FROM FIDE_PERSONA_TB 
+    WHERE NOMBRE_USUARIO = P_NOMBRE_USUARIO
+    AND ID_ESTADO = 1;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        P_ID_PERSONA:= NULL;
+        P_CONTRASENA:= NULL;
+        P_ID_ROL:= NULL;
+END FIDE_PERSONA_TB_OBTENER_USUARIO_SP;
         */
 
 
