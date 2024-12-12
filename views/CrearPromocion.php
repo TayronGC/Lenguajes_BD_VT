@@ -87,19 +87,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="px-4 py-2">1</td>
-            <td class="px-4 py-2">Descuento de Navidad</td>
-            <td class="px-4 py-2">2024-12-01</td>
-            <td class="px-4 py-2">2024-12-25</td>
-            <td class="px-4 py-2">15%</td>
-            <td class="px-4 py-2">Regalo de Navidad</td>
-            <td class="px-4 py-2">Activo</td>
-            <td class="px-4 py-2">
-              <a href="/promociones/editar/1" class="bg-yellow-500 text-white px-4 py-2 rounded-md">Editar</a>
-              <a href="/promociones/eliminar/1" class="bg-red-500 text-white px-4 py-2 rounded-md" onclick="return confirm('¿Estás seguro de que deseas eliminar esta promoción?')">Eliminar</a>
-            </td>
-          </tr>
+        <?php
+    while ($row = oci_fetch_assoc($stid)) {
+        echo "<tr>";
+        echo "<td>" . $row['ID_PROMOCION'] . "</td>";
+        echo "<td>" . $row['NOMBRE'] . "</td>";
+        echo "<td>" . $row['DESCRIPCION'] . "</td>";
+        echo "<td>" . $row['DESCUENTO'] . "</td>";
+        echo "<td>" . $row['FECHA_INICIO'] . "</td>";
+        echo "<td>" . $row['FECHA_FIN'] . "</td>";
+        echo "<td>
+                <button class='btn btn-warning btn-sm' data-bs-toggle='modal' 
+                        onclick='openEditModal(" . $row['ID_PROMOCION'] . ", \"" . $row['NOMBRE'] . "\", \"" . $row['DESCRIPCION'] . "\", " . $row['DESCUENTO'] . ", \"" . $row['FECHA_INICIO'] . "\", \"" . $row['FECHA_FIN'] . "\")'>
+                    Editar
+                </button>
+                <button class='btn btn-danger btn-sm' onclick='eliminarPromocion(" . $row['ID_PROMOCION'] . ")'>
+                    Eliminar
+                </button>
+              </td>";
+        echo "</tr>";
+    }
+    ?>
         </tbody>
       </table>
     </div>
@@ -112,3 +120,9 @@
   </footer>
 </body>
 </html>
+
+<?php
+
+oci_free_statement($stid);
+oci_close($conn);
+?>
