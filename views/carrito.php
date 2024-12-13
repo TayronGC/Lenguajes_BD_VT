@@ -3,11 +3,13 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -37,11 +39,14 @@ session_start();
             margin-top: 20px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid #ddd;
         }
 
-        th, td {
+        th,
+        td {
             padding: 16px;
             text-align: center;
             font-size: 16px;
@@ -113,7 +118,10 @@ session_start();
         }
 
         @media (max-width: 768px) {
-            table, th, td {
+
+            table,
+            th,
+            td {
                 font-size: 14px;
             }
 
@@ -123,57 +131,66 @@ session_start();
         }
     </style>
 </head>
+
 <body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/views/dashboard.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+    </nav>
 
-<div class="container">
-    <h2>Tu carrito de compras</h2>
+    <div class="container">
+        <h2>Tu carrito de compras</h2>
 
-    <?php if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Subtotal</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $total = 0;
-                foreach ($_SESSION['carrito'] as $carritoItem): 
-                    $subtotal = $carritoItem->price * $carritoItem->cantidad;
-                    $total += $subtotal;
-                ?>
+        <?php if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])): ?>
+            <table>
+                <thead>
                     <tr>
-                        <td><?php echo htmlspecialchars($carritoItem->name); ?></td>
-                        <td><?php echo (int)$carritoItem->cantidad; ?></td>
-                        <td>$<?php echo number_format($carritoItem->price, 2); ?></td>
-                        <td>$<?php echo number_format($subtotal, 2); ?></td>
-                        <td><button class="btn-eliminar" onclick="confirmarEliminacion('<?php echo $carritoItem->id; ?>')">Eliminar</button></td>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php $total = 0;
+                    foreach ($_SESSION['carrito'] as $carritoItem):
+                        $subtotal = $carritoItem->price * $carritoItem->cantidad;
+                        $total += $subtotal;
+                    ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($carritoItem->name); ?></td>
+                            <td><?php echo (int)$carritoItem->cantidad; ?></td>
+                            <td>$<?php echo number_format($carritoItem->price, 2); ?></td>
+                            <td>$<?php echo number_format($subtotal, 2); ?></td>
+                            <td><button class="btn-eliminar" onclick="confirmarEliminacion('<?php echo $carritoItem->id; ?>')">Eliminar</button></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
 
-        <div class="total">
-            <p>Total: $<?php echo number_format($total, 2); ?></p>
-        </div>
+            <div class="total">
+                <p>Total: $<?php echo number_format($total, 2); ?></p>
+            </div>
 
-        <a href="index.php?controller=Carrito&action=finalizarCompra" class="btn-comprar">Finalizar Compra</a>
-    <?php else: ?>
-        <p class="empty-message">Tu carrito está vacío. ¡Añade productos para comenzar!</p>
-    <?php endif; ?>
+            <a href="index.php?controller=Carrito&action=finalizarCompra" class="btn-comprar">Finalizar Compra</a>
+        <?php else: ?>
+            <p class="empty-message">Tu carrito está vacío. ¡Añade productos para comenzar!</p>
+        <?php endif; ?>
 
-</div>
+    </div>
 
-<script>
-    function confirmarEliminacion(productId) {
-        if (confirm('¿Estás seguro de que deseas eliminar este producto del carrito?')) {
-            window.location.href = `index.php?controller=Carrito&action=eliminarProducto&id=${productId}`;
+    <script>
+        function confirmarEliminacion(productId) {
+            if (confirm('¿Estás seguro de que deseas eliminar este producto del carrito?')) {
+                window.location.href = `index.php?controller=Carrito&action=eliminarProducto&id=${productId}`;
+            }
         }
-    }
-</script>
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
