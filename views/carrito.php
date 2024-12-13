@@ -116,14 +116,15 @@ session_start();
             <tbody>
                 <?php $total = 0;
                 foreach ($_SESSION['carrito'] as $carritoItem): 
-                    $subtotal = $carritoItem->precio * $carritoItem->cantidad;
+                    $subtotal = $carritoItem->price * $carritoItem->cantidad;
                     $total += $subtotal;
                 ?>
                     <tr>
-                        <td>Producto: <?php echo $carritoItem->name; ?></td>
-                        <td>Producto: <?php echo $carritoItem->cantidad; ?></td>
-                        <td>Producto: <?php echo $carritoItem->precio; ?></td>
+                        <td><?php echo $carritoItem->name; ?></td>
+                        <td><?php echo $carritoItem->cantidad; ?></td>
+                        <td><?php echo $carritoItem->price; ?></td>
                         <td>$<?php echo $subtotal; ?></td>
+                        <td><a href="index.php?controller=Carrito&action=eliminarProducto&id=<?= $carritoItem->id ?>" >Eliminar Producto</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -136,30 +137,6 @@ session_start();
         <p>El carrito está vacío</p>
     <?php endif; ?>
 
-
-    <?php
-    if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
-        echo "<table>";
-        echo "<tr><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Total</th><th>Acción</th></tr>";
-        foreach ($_SESSION['carrito'] as $producto) {
-            $subtotal = $producto['precio'] * $producto['cantidad'];
-            $total += $subtotal;
-            echo "<tr>
-                    <td>{$producto['nombre']}</td>
-                    <td>{$producto['cantidad']}</td>
-                    <td>\${$producto['precio']}</td>
-                    <td>\${$subtotal}</td>
-                    <td><a href='carrito.php?eliminar={$producto['id_producto']}' class='btn-eliminar'>Eliminar</a></td>
-                </tr>";
-        }
-        echo "</table>";
-
-        echo "<div class='total'>Total: \${$total}</div>";
-        echo "<button class='btn-comprar'><a href='pago.php' style='color: #fff; text-decoration: none;'>Proceder a la compra</a></button>";
-    } else {
-        echo "<p>Tu carrito está vacío.</p>";
-    }
-    ?>
 </div>
 
 </body>

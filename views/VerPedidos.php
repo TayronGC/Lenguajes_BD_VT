@@ -36,9 +36,7 @@
             <th class="py-3 px-6 text-left">Fecha Pedido</th>
             <th class="py-3 px-6 text-left">Proveedor</th>
             <th class="py-3 px-6 text-left">Persona</th>
-            <th class="py-3 px-6 text-left">Creado Por</th>
             <th class="py-3 px-6 text-left">Fecha Creación</th>
-            <th class="py-3 px-6 text-left">Acción</th>
             <th class="py-3 px-6 text-center">Acciones</th>
           </tr>
         </thead>
@@ -48,9 +46,7 @@
             <td class="py-3 px-6">2024-12-10</td>
             <td class="py-3 px-6">Proveedor A</td>
             <td class="py-3 px-6">Persona X</td>
-            <td class="py-3 px-6">Admin</td>
             <td class="py-3 px-6">2024-12-10 10:00:00</td>
-            <td class="py-3 px-6">Nuevo Pedido</td>
             <td class="py-3 px-6 text-center">
               <button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button> |
               <a href="#" class="text-red-500 hover:underline">Eliminar</a>

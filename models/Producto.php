@@ -23,7 +23,7 @@ class Producto {
         oci_bind_by_name($stid,':p_id_producto',$id);
         oci_bind_by_name($stid,':p_nombre_producto',$this->nombre_producto,250);
         //oci_bind_by_name($stid,':P_DESCRIPCION',$this->descripcion,255);
-        oci_bind_by_name($stid, ":p_precio_unitario",$this->precio_unitario,-1);
+        oci_bind_by_name($stid, ":p_precio_unitario",$this->precio_unitario,-1,SQLT_INT);
         /*
     oci_bind_by_name($stid,':P_FECHA_VENCIMIENTO',$this->fecha_vencimiento);
         oci_bind_by_name($stid,':P_ID_CATEGORIA',$this->id_categoria);

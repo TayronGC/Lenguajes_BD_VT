@@ -43,9 +43,8 @@
                     <h2><?= $producto['NOMBRE_PRODUCTO'] ?></h2>
                     <p><?= $producto['DESCRIPCION'] ?></p>
                     <p>Precio: ₡<?= $producto['PRECIO_UNITARIO'] ?></p>
-                    <button onclick="addToCart($producto['ID_PRODUCTO'], $producto['PRECIO_UNITARIO'])" class="btn-2">Comprar</button>
-                    <form action="../controllers/CarritoController.php" method="POST">
-                    <input type="submit" class="submit">
+                    <a class="btn-2" href="index.php?controller=Carrito&action=agregarAlCarritoBoton&id=<?= $producto['ID_PRODUCTO'] ?>" >Comprar</a>
+                    <!--<input type="submit" class="submit">-->
                 </div>
             </div>
             <?php endforeach; ?>
@@ -69,5 +68,12 @@
     </footer>
 
 </body>
-
+<script>
+    function addToCart(productId, price) {
+        const url = `index.php?controller=Carrito&action=agregarAlCarrito&id=${productId}&cantidad=1`;
+        console.log('idproducto: ',productId)
+        console.log('Precio',price)
+        window.location.href = url;
+    }
+</script>
 </html>

@@ -33,12 +33,12 @@ session_start();
                     <li><a href="index.php?controller=IniciarSession&action=loginPage">Inicio de Sesion</a></li>
                     <?php }else{ ?>
                     <li><form action="index.php?controller=IniciarSession&action=cerrarSession" method="post">
-                        <a ><button type="submit" class="link-style">Cerrar Sesion</button></a>
+                        <a ><button type="submit" id="boton-cerrar" class="link-style">Cerrar Sesion</button></a>
                     </form></li>
                     <?php }?>
                     <li><a href="index.php?controller=Cliente&action=verTodosproductos">Productos</a></li>
                     <li><a href="/views/PromocionesCliente.php">Promociones</a></li>
-                    <li><a href="/views/carrito.php">Carrito</a></li>
+                    <li><a href="index.php?controller=Carrito&action=listarCarrito">Carrito</a></li>
                 </ul>
             </nav>
             <div class="socials-1">

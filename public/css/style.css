@@ -71,6 +71,19 @@ background: linear-gradient(
   font-weight: bold;
 }
 
+#boton-cerrar{
+  font-size: 18px;
+  color: #694930;
+  display: block;
+  font-weight: bold;
+  font-family: "Bebas Neue", cursive;
+
+}
+
+#boton-cerrar:hover{
+  color: #53a52d;
+}
+
 .menu .navbar ul li a:hover{
   color: #53a52d;
 }
