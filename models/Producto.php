@@ -16,15 +16,23 @@ class Producto {
     }
 
     public function verProducto($id){
-        $stid = oci_parse($this->conn,'BEGIN ver_producto2(:p_id_producto,:p_nombre,:p_descripcion,:p_id_categoria,:p_estado); END;');
+        $sp ='BEGIN FIDE_PRODUCTO_TB_VER_PRODUCTO_SP(:p_id_producto,:p_nombre_producto,:p_precio_unitario); END;';
+        //$sp ='BEGIN FIDE_PRODUCTO_TB_VER_PRODUCTO_SP(:P_ID_PRODUCTO,:P_NOMBRE_PRODUCTO,:P_DESCRIPCION,:P_PRECIO_UNITARIO,:P_FECHA_VENCIMIENTO,:P_ID_CATEGORIA,:P_ID_PROVEEDOR,:P_ID_ESTADO); END;';
+        $stid = oci_parse($this->conn,$sp);
 
-        oci_bind_by_name($stid,'p_id_producto',$id);
-        oci_bind_by_name($stid,'p_nombre',$nombre_producto,100);
-        oci_bind_by_name($stid,'p_descripcion',$descripcion,255);
-        oci_bind_by_name($stid,'p_id_categoria',$id_categoria,100);
-        oci_bind_by_name($stid,'p_estado',$id_estado,100);
-
+        oci_bind_by_name($stid,':p_id_producto',$id);
+        oci_bind_by_name($stid,':p_nombre_producto',$this->nombre_producto,250);
+        //oci_bind_by_name($stid,':P_DESCRIPCION',$this->descripcion,255);
+        oci_bind_by_name($stid, ":p_precio_unitario",$this->precio_unitario,-1);
+        /*
+    oci_bind_by_name($stid,':P_FECHA_VENCIMIENTO',$this->fecha_vencimiento);
+        oci_bind_by_name($stid,':P_ID_CATEGORIA',$this->id_categoria);
+        oci_bind_by_name($stid,':P_ID_PROVEEDOR',$this->id_proveedor);
+        oci_bind_by_name($stid,':P_ID_ESTADO',$this->id_estado);
+        */
+        $this->id_producto = $id;
         oci_execute($stid);
+        /*
         echo "Procedimiento realizado" . "<br>";
 
         echo "Id Producto: " . $id . "<br>";
@@ -32,7 +40,7 @@ class Producto {
         echo "Descripcion: " . $descripcion . "<br>";
         echo "Id categoria: " . $id_categoria . "<br>";
         echo "Id estado: " . $id_estado . "<br>";
-        
+        */
         oci_free_statement($stid);
     }
 

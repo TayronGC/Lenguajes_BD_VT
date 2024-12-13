@@ -116,7 +116,7 @@ session_start();
         <!-- Card para Pedidos -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4">Ver y Editar Pedidos</h3>
-          <a href="index.php?controller=IniciarSession&action=loginPage" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
+          <a href="/views/verPedidos.php" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
 
         <!-- Card para Promociones -->

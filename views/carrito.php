@@ -1,6 +1,6 @@
 <?php
 session_start();
-$total = 0;
+//$total = 0;
 ?>
 
 <!DOCTYPE html>
@@ -102,6 +102,40 @@ $total = 0;
 
 <div class="container">
     <h2>Tu carrito de compras</h2>
+
+    <?php if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])): ?>
+        <table>
+            <thead>
+                <tr>
+                    <td>Producto</td>
+                    <td>Cantidad</td>
+                    <td>Precio</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $total = 0;
+                foreach ($_SESSION['carrito'] as $carritoItem): 
+                    $subtotal = $carritoItem->precio * $carritoItem->cantidad;
+                    $total += $subtotal;
+                ?>
+                    <tr>
+                        <td>Producto: <?php echo $carritoItem->name; ?></td>
+                        <td>Producto: <?php echo $carritoItem->cantidad; ?></td>
+                        <td>Producto: <?php echo $carritoItem->precio; ?></td>
+                        <td>$<?php echo $subtotal; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <div class="total">
+            <p>Total: $<?php echo $total; ?></p>
+        </div>
+    <?php else: ?>
+        <p>El carrito está vacío</p>
+    <?php endif; ?>
+
 
     <?php
     if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {

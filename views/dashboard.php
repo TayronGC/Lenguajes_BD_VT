@@ -36,7 +36,7 @@ session_start();
                         <button type="submit" class="link-style">Cerrar Sesion</button>
                     </form></li>
                     <?php }?>
-                    <li><a href="/views/ProductosCliente.php">Productos</a></li>
+                    <li><a href="index.php?controller=Cliente&action=verTodosproductos">Productos</a></li>
                     <li><a href="/views/PromocionesCliente.php">Promociones</a></li>
                     <li><a href="/views/carrito.php">Carrito</a></li>
                 </ul>
@@ -105,6 +105,7 @@ session_start();
             <form action="https://formsubmit.co/macrosalud29@gmail.com" method="POST">
                 <input class="campo" type="text" name="name" placeholder="Nombre">
                 <input class="campo" type="email" name="email" placeholder="Correo Electronico">
+                <input class="campo" type="razon" name="razon" placeholder="Razón">
                 <input class="btn-2" type="submit" value="Enviar">
 
                 <input type="hidden" name="_next" value="http://localhost:3000/views/dashboard.php">
@@ -119,7 +120,7 @@ session_start();
                 <div class="link-img">
                     <img src="/public/img/macrologo.png" alt="">
                     <div class="socials-2">
-                        <a target="_blank" href="https://www.instagram.com/macrosalud/"><img src="/public/img/r1.svg" alt=""></a>
+                        <a target="_blank" href="https://www.instagram.com/_macrosalud_/"><img src="/public/img/r1.svg" alt=""></a>
                         <a href="#form"><img src="/public/img/r2.svg" alt=""></a>
                         <a target="_blank" href="https://www.facebook.com/share/p/15DTKFsLLT/"><img src="/public/img/r3.svg" alt=""></a>
                     </div>

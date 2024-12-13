@@ -36,21 +36,28 @@
 
     <section class="about">
         <div class="container">
+            <?php if (!empty($productos)) : ?>
+                <?php foreach ($productos as $producto): ?>
             <div class="about-content">
                 <div class="about-txt">
-                    <h2>Producto 1</h2>
-                    <p>Descripción del producto 1. Es un producto increíble y de alta calidad.</p>
+                    <h2><?= $producto['NOMBRE_PRODUCTO'] ?></h2>
+                    <p><?= $producto['DESCRIPCION'] ?></p>
+                    <p>Precio: ₡<?= $producto['PRECIO_UNITARIO'] ?></p>
+                    <button onclick="addToCart($producto['ID_PRODUCTO'], $producto['PRECIO_UNITARIO'])" class="btn-2">Comprar</button>
+                    <form action="../controllers/CarritoController.php" method="POST">
+                    <input type="submit" class="submit">
+                </div>
+            </div>
+            <?php endforeach; ?>
+            <?php else: ?>
+            <div class="about-content">
+                <div class="about-txt">
+                    <h2>¡Ups!</h2>
+                    <p>No hay productos disponibles</p>
                     <button class="btn-2">Comprar</button>
                 </div>
             </div>
-
-            <div class="about-content">
-                <div class="about-txt">
-                    <h2>Producto 2</h2>
-                    <p>Descripción del producto 2. Elige este producto por su durabilidad y características.</p>
-                    <button class="btn-2">Comprar</button>
-                </div>
-            </div>
+            <?php endif; ?>
 
         </div>
     </section>
