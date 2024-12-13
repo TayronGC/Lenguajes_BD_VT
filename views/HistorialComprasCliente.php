@@ -37,10 +37,6 @@
             <th class="py-3 px-6 text-left">Frecuencia</th>
             <th class="py-3 px-6 text-left">Producto</th>
             <th class="py-3 px-6 text-left">Persona</th>
-            <th class="py-3 px-6 text-left">Creado Por</th>
-            <th class="py-3 px-6 text-left">Fecha Creación</th>
-            <th class="py-3 px-6 text-left">Acción</th>
-            <th class="py-3 px-6 text-center">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -51,8 +47,6 @@
             <td class="py-3 px-6">Producto A</td>
             <td class="py-3 px-6">Persona X</td>
             <td class="py-3 px-6">Admin</td>
-            <td class="py-3 px-6">2024-12-10 10:00:00</td>
-            <td class="py-3 px-6">Venta Realizada</td>
             <td class="py-3 px-6 text-center">
               <!--<button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button>--> |
               <a href="#" class="text-red-500 hover:underline">Eliminar</a>

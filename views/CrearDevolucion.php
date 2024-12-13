@@ -123,17 +123,6 @@
           <label for="editFactura" class="block text-sm font-medium text-gray-700">Factura</label>
           <input type="text" id="editFactura" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
         </div>
-        <div class="mb-4">
-          <label for="editAccion" class="block text-sm font-medium text-gray-700">Acción</label>
-          <input type="text" id="editAccion" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-        </div>
-        <div class="mb-4">
-          <label for="editEstado" class="block text-sm font-medium text-gray-700">Estado</label>
-          <select id="editEstado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-            <option value="1">Activo</option>
-            <option value="2">Inactivo</option>
-          </select>
-        </div>
         <div class="flex justify-end space-x-4">
           <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="closeEditModal()">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Actualizar</button>
@@ -166,7 +155,6 @@
       document.getElementById("editFechaDevolucion").value = fechaDevolucion;
       document.getElementById("editProducto").value = producto;
       document.getElementById("editFactura").value = factura;
-      document.getElementById("editAccion").value = accion;
 
 
       document.getElementById("editModal").classList.remove("hidden");

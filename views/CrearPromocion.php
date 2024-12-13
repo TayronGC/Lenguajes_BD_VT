@@ -81,9 +81,6 @@
             <th class="px-4 py-2 text-left">Fecha Inicio</th>
             <th class="px-4 py-2 text-left">Fecha Fin</th>
             <th class="px-4 py-2 text-left">Descuento</th>
-            <th class="px-4 py-2 text-left">Acción</th>
-            <th class="px-4 py-2 text-left">Estado</th>
-            <th class="px-4 py-2 text-left">Acciones</th>
           </tr>
         </thead>
         <tbody>

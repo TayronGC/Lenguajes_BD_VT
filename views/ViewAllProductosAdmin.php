@@ -42,7 +42,7 @@
             <th class="py-3 px-6 text-center">Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody> 
         <?php if (!empty($productos)) : ?>
             <?php foreach ($productos as $producto): ?>
             <tr class="border-b">
@@ -124,14 +124,6 @@
           </select>
         </div>
 
-        <div class="mb-4">
-          <label for="editProductoStatus" class="block text-sm font-medium text-gray-700">Estado</label>
-          <!--<input id="editIdEstado" name="id_estado" value="">-->
-          <select id="editProductoStatus" name="id_estado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-            <option value="1">Activo</option>
-            <option value="2">Inactivo</option>
-          </select>
-        </div>
         <div class="flex justify-end space-x-4">
           <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="closeModal()">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Guardar Cambios</button>
@@ -170,7 +162,6 @@
       productExpiryDate,
       productCategoryName,
       productProviderName,
-      productStatus,
       productCategoryId,
       productProviderId
     ) {
@@ -182,7 +173,6 @@
     document.getElementById('editProductoExpiryDate').value = productExpiryDate;
     document.getElementById('editProductoCategoryName').value = productCategoryName;
     document.getElementById('editProductoProviderName').value = productProviderName;
-    document.getElementById('editProductoStatus').value = productStatus;
     document.getElementById('editProductoCategoryId').value = productCategoryId;
     document.getElementById('editProductoProviderId').value = productProviderId;
       document.getElementById('editModal').classList.remove('hidden');

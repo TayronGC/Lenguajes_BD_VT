@@ -73,17 +73,6 @@
           <label for="persona" class="block text-sm font-medium text-gray-700">Persona</label>
           <input type="text" id="persona" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" value="Persona X">
         </div>
-        <div class="mb-4">
-          <label for="accion" class="block text-sm font-medium text-gray-700">Acción</label>
-          <input type="text" id="accion" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" value="Nuevo Pedido">
-        </div>
-        <div class="mb-4">
-          <label for="estado" class="block text-sm font-medium text-gray-700">Estado</label>
-          <select id="estado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-            <option value="1" selected>Activo</option>
-            <option value="2">Inactivo</option>
-          </select>
-        </div>
         <div class="flex justify-end space-x-4">
           <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="closeModal()">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Guardar Cambios</button>
