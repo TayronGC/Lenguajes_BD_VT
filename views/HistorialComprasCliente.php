@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['role_id'] != 1){
+  header("Location: index.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +26,9 @@
 <body>
   <header class="bg-green-500 text-white py-4">
     <nav class="container mx-auto flex justify-between items-center">
-      <a href="/index.php" class="text-xl font-bold">Macrobiotica</a>
+      <a href="index.php?controller=Admin&action=adminPage" class="text-xl font-bold">Macrobiotica</a>
       <ul class="flex space-x-4">
-        <li><a href="/index.php" class="hover:text-gray-300">Inicio</a></li>
+        <li><a href="index.php?controller=Admin&action=adminPage" class="hover:text-gray-300">Inicio</a></li>
       </ul>
     </nav>
   </header>
@@ -36,7 +43,8 @@
             <th class="py-3 px-6 text-left">Frecuencia</th>
             <th class="py-3 px-6 text-left">Producto</th>
             <th class="py-3 px-6 text-left">Persona</th>
-            <th class="py-3 px-6 text-left">ID Análisis</th>
+            <th class="py-3 px-6 text-left">Fecha</th>
+            <th class="py-3 px-6 text-left">Accion</th>
           </tr>
         </thead>
         <tbody>
@@ -47,7 +55,7 @@
               <td class="py-3 px-6"><?= $venta['FRECUENCIA'] ?></td>
               <td class="py-3 px-6"><?= $venta['NOMBRE_PRODUCTO'] ?></td>
               <td class="py-3 px-6"><?= $venta['NOMBRE'] ?></td>
-              <td class="py-3 px-6"><?= $venta['CREADO_POR'] ?></td>
+              
               <td class="py-3 px-6"><?= $venta['FECHA_CREACION'] ?></td>
               <td class="py-3 px-6 text-center">
                 <button class="text-red-500 hover:underline" onclick="openDeleteModal()">Eliminar</button>

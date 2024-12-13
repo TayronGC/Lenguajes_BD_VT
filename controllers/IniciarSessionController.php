@@ -36,10 +36,10 @@ class IniciarSessionController {
                             //echo "Rol_ID: ". $this->persona->id_rol;
                             if($_SESSION['role_id'] == 1){
                                 //echo "Admin";
-                                header("Location: index.php");
+                                header("Location: index.php?controller=Admin&action=adminPage");
                             }elseif($_SESSION['role_id'] == 2){
                                 //echo "Cliente";
-                                header("Location: index.php?controller=Dashboard&action=dashboardpage");
+                                header("Location: index.php");
                             }else{
                                 echo "Rol invalido";
                             }
@@ -49,11 +49,11 @@ class IniciarSessionController {
                             echo  $_SESSION['user_id'] . "<br>";
                             echo "rol".$_SESSION['role_id'];
                         }else{
-                            echo  "datos incorrectos";
+                            //echo  "datos incorrectos";
                             $message = "Datos incorrectos";
                         }
                     }else{
-                        echo  "datos incorrectos";
+                        //echo  "datos incorrectos";
                         $message = "Datos incorrectos";
                     }
 
@@ -91,11 +91,8 @@ class IniciarSessionController {
                     } */
                 //}
             }
-        }else{
-            echo  "datos incorrectos";
         }
-
-        include "../views/login.php";
+        include "views/login.php";
     }
 
 

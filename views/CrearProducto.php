@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['role_id'] != 1){
+  header("Location: index.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +16,7 @@
 <body>
   <header class="bg-green-500 text-white py-4">
     <nav class="container mx-auto flex justify-between items-center">
-      <a href="/index.php" class="text-xl font-bold">Macrobiotica</a>
+      <a href="index.php?controller=Admin&action=adminPage" class="text-xl font-bold">Macrobiotica</a>
       <ul class="flex space-x-4">
       </ul>
     </nav>
@@ -63,7 +70,7 @@
         </div>
             -->
         <div class="flex justify-end space-x-4">
-          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='index.php'">Cancelar</button>
+          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='index.php?controller=Admin&action=adminPage'">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Crear Producto</button>
         </div>
       </form>

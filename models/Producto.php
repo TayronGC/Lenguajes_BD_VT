@@ -16,7 +16,7 @@ class Producto {
     }
 
     public function verProducto($id){
-        $sp ='BEGIN FIDE_PRODUCTO_TB_VER_PRODUCTO_SP(:p_id_producto,:p_nombre_producto,:p_precio_unitario); END;';
+        $sp ='BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_PRODUCTO_TB_VER_PRODUCTO_SP(:p_id_producto,:p_nombre_producto,:p_precio_unitario); END;';
         //$sp ='BEGIN FIDE_PRODUCTO_TB_VER_PRODUCTO_SP(:P_ID_PRODUCTO,:P_NOMBRE_PRODUCTO,:P_DESCRIPCION,:P_PRECIO_UNITARIO,:P_FECHA_VENCIMIENTO,:P_ID_CATEGORIA,:P_ID_PROVEEDOR,:P_ID_ESTADO); END;';
         $stid = oci_parse($this->conn,$sp);
 
@@ -48,7 +48,7 @@ class Producto {
         $productos = [];
         try {
             // Procedimiento almacenado 
-            $sp = 'BEGIN FIDE_PRODUCTO_VER_TODOS_SP(:p_cursor); END;';
+            $sp = 'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_PRODUCTO_VER_TODOS_SP(:p_cursor); END;';
             $stid = oci_parse($this->conn, $sp);
     
             
@@ -83,6 +83,7 @@ class Producto {
         $stid = oci_parse($this->conn,'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_PRODUCTO_TB_INSERTAR_DATOS_SP(:p_nombre_producto, :p_descripcion, :p_precio_unitario, TO_DATE(:p_fecha_vencimiento, \'DD-MM-YYYY\') , :p_id_categoria, :p_id_proveedor); END;');
         //Para el formato de fecha
         $this->fecha_vencimiento = date('d-m-Y'); 
+        
 
         oci_bind_by_name($stid, ":p_nombre_producto",$this->nombre_producto,100);
         oci_bind_by_name($stid, ":p_descripcion",$this->descripcion,255);

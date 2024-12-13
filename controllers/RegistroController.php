@@ -1,6 +1,14 @@
 <?php
-require_once "../models/DataBase.php";
-require_once "../models/Persona.php";
+//require_once "../models/DataBase.php";
+//require_once "../models/Persona.php";
+
+require_once "models/DataBase.php";
+require_once "models/Persona.php";
+require_once "models/direcciones/Pais.php";
+require_once "models/direcciones/Provincia.php";
+require_once "models/direcciones/Canton.php";
+require_once "models/direcciones/Distrito.php";
+require_once "models/direcciones/Direccion.php";
 
 
 class RegistroController {
@@ -15,6 +23,8 @@ class RegistroController {
 
     public function registrarUser(){
         if($_SERVER["REQUEST_METHOD"] == 'POST'){
+
+
             //if(!empty($_POST["Registro"])){
                 if(empty($_POST["nombre"]) || empty($_POST["apellido1"]) ||
                 empty($_POST["apellido2"]) || empty($_POST["correo"]) ||
@@ -29,11 +39,25 @@ class RegistroController {
                     $this->persona->telefono=$_POST["telefono"];
                     $this->persona->nombre_usuario=$_POST["nombre_usuario"];
                     $this->persona->contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
+
+                    $id_pais =  $_POST['pais'];
+                    $id_provincia =  $_POST['provincia'];
+                    $id_canton =  $_POST['canton'];
+                    $id_distrito =  $_POST['distrito'];
+                    $detalle =  'Direccion Cliente';
+                    
+
+                    $direccion = new Direccion($this->db);
+
                     if($this->persona->validarUser($username)){
                         $message = "El nombre de usuario ya está existe.";
                     }else{
+                        $direccion->insertarDirecciones($detalle,$id_pais,$id_provincia,$id_canton,$id_distrito);
+                        $this->persona->id_direccion = $direccion->id_direccion;
+                        //echo "id direccion obtenido" . $this->persona->id_direccion;
                         if($this->persona->insertUsuario()){
-                            header("Location: /views/login.php");
+                            //$direccion->insertarDirecciones($detalle,$id_pais,$id_provincia,$id_canton,$id_distrito);
+                            header("Location: index.php?controller=IniciarSession&action=loginPage");
                         exit;
                         }else{
                             $message = "Error al registrar el usuario";
@@ -42,14 +66,27 @@ class RegistroController {
                 }
             //}
         }
-        include "../views/register.php";
+        include "views/register.php";
+    }
+
+    public function registerPage(){
+        $pais = new Pais($this->db);
+        $provincia = new provincia($this->db);
+        $canton = new Canton($this->db);
+        $distrito = new Distrito($this->db);
+
+        $paises = $pais->verPaises();
+        $provincias = $provincia->verProvincias();
+        $cantones = $canton->verCantones();
+        $distritos = $distrito->verDistritos();
+        include "views/register.php";
     }
 
     
 }
 
-$registroContro = new RegistroController();
-$registroContro->registrarUser();
+//$registroContro = new RegistroController();
+//$registroContro->registrarUser();
 /*
 if ($_SERVER['REQUEST_URI'] == '/RegistroController.php') {
     // Muestra el formulario de registro

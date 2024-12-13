@@ -1,12 +1,12 @@
 <?php
 
 class Pedido {
-    $conn;
-    $id_pedido;
-    $id_persona;
-    $fecha_pedido;
-    $id_proveedor;
-    $id_Estado;
+    private  $conn;
+    public $id_pedido;
+    public $id_persona;
+    public $fecha_pedido;
+    public $id_proveedor;
+    public $id_Estado;
 
     public function __construct($db) {
         $this->conn = $db;

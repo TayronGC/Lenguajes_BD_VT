@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['role_id'] != 1){
+  header("Location: index.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +26,9 @@
 <body>
   <header class="bg-green-500 text-white py-4">
     <nav class="container mx-auto flex justify-between items-center">
-      <a href="/index.php" class="text-xl font-bold">Macrobiotica</a>
+      <a href="index.php?controller=Admin&action=adminPage" class="text-xl font-bold">Macrobiotica</a>
       <ul class="flex space-x-4">
-        <li><a href="/index.php" class="hover:text-gray-300">Inicio</a></li>
+        <li><a href="index.php?controller=Admin&action=adminPage" class="hover:text-gray-300">Inicio</a></li>
         <li><a href="/pedidos.php" class="hover:text-gray-300">Pedidos</a></li>
       </ul>
     </nav>
@@ -37,14 +44,22 @@
         </div>
         <div class="mb-4">
           <label for="proveedor" class="block text-sm font-medium text-gray-700">Proveedor</label>
-          <input type="text" id="proveedor" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <select id="proveedor" name="proveedor" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($proveedores as $proveedor): ?>
+              <option value="<?= $proveedor['ID_PROVEEDOR'] ?>"><?= $proveedor['NOMBRE_PROVEEDOR'] ?> <?= $proveedor['APELLIDO1'] ?></option>
+            <?php endforeach; ?>
+          </select>
         </div>
         <div class="mb-4">
           <label for="persona" class="block text-sm font-medium text-gray-700">Persona Responsable</label>
-          <input type="text" id="persona" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <select id="persona" name="persona" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($personas as $persona): ?>
+              <option value="<?= $persona['ID_PERSONA'] ?>"><?= $persona['NOMBRE_USUARIO'] ?></option>
+            <?php endforeach; ?>
+          </select>
         </div>
         <div class="flex justify-end space-x-4">
-          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='/pedidos.php'">Cancelar</button>
+          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='index.php?controller=Admin&action=adminPage'">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Crear Pedido</button>
         </div>
       </form>

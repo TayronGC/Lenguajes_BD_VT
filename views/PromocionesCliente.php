@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,9 +21,9 @@
                 </div>
                 <div class="navbar">
                     <ul>
-                        <li><a href="index.php?controller=Dashboard&action=dashboardpage">Inicio</a></li>
-                        <li><a href="/views/ProductosCliente.php">Productos</a></li>
-                        <li><a href="/views/PromocionesCliente.php">Promociones</a></li>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a href="index.php?controller=Cliente&action=verTodosproductos">Productos</a></li>
+                        <li><a href="index.php?controller=Cliente&action=verTodasPromociones">Promociones</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,21 +39,29 @@
 
     <section class="about">
         <div class="container">
-            <div class="about-content">
-                <div class="about-txt">
-                    <h2>Promoción 1</h2>
-                    <p>Descripción de la promoción 1. Obtén un descuento del 20% en tu primera compra.</p>
-                    <button class="btn-2">Aprovechar</button>
-                </div>
-            </div>
 
+        <?php if (!empty($promociones)) : ?>
+            <?php foreach ($promociones as $promocion): ?>
             <div class="about-content">
                 <div class="about-txt">
-                    <h2>Promoción 2</h2>
-                    <p>Descripción de la promoción 2. Lleva dos productos y paga solo uno.</p>
+                    <h2><?= $promocion['DESCRIPCION'] ?></h2>
+                    <p>Obtén un descuento del <?= $promocion['DESCUENTO'] ?>%</p>
+                    <p>Aprovecha ahora porque acaba el <?= $promocion['FECHA_FIN'] ?></p>
+                    <p>Producto: <?= $promocion['NOMBRE_PRODUCTO'] ?>, Precio antes: <?= $promocion['PRECIO_UNITARIO'] ?></p>
+                    <p>Precio ahora: <?= $promocion['PRECIO_FINAL'] ?></p>
                     <button class="btn-2">Aprovechar</button>
                 </div>
             </div>
+            <?php endforeach; ?>
+            <?php else: ?>
+            <div class="about-content">
+                <div class="about-txt">
+                    <h2>Ups</h2>
+                    <p>No hay Promociones Disponibles</p>
+                </div>
+            </div>
+            </div>
+            <?php endif; ?>
 
         </div>
     </section>

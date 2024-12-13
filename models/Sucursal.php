@@ -1,7 +1,7 @@
 <?php
 
 class Sucursal {
-    $conn;
+    private $conn;
 
     //Contructor para establecer la conexion
     public function __construct($db) {

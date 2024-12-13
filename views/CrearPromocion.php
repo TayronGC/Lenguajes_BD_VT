@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['role_id'] != 1){
+  header("Location: index.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,9 +26,9 @@
 <body>
   <header class="bg-green-500 text-white py-4">
     <nav class="container mx-auto flex justify-between items-center">
-      <a href="/index.php" class="text-xl font-bold">Macrobiotica</a>
+      <a href="index.php?controller=Admin&action=adminPage" class="text-xl font-bold">Macrobiotica</a>
       <ul class="flex space-x-4">
-        <li><a href="/index.php" class="hover:text-gray-300">Inicio</a></li>
+        <li><a href="index.php?controller=Admin&action=adminPage" class="hover:text-gray-300">Inicio</a></li>
       </ul>
     </nav>
   </header>
@@ -30,8 +37,8 @@
     <div class="container mx-auto">
 
       <h2 class="text-2xl font-bold mb-6 text-center">Crear/Editar Promoción</h2>
-      <form class="bg-white shadow-md rounded-lg p-6" action="index.php?controlador=Promocion&accion=crear" method="POST">
-        <input type="hidden" name="idPromocion" value="">
+      
+      <form action="index.php?controller=Promocion&action=insertarPromocion" method="POST" class="bg-white shadow-md rounded-lg p-6">
         
         <div class="mb-4">
           <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
@@ -54,20 +61,16 @@
         </div>
 
         <div class="mb-4">
-          <label for="accion" class="block text-sm font-medium text-gray-700">Acción</label>
-          <input type="text" id="accion" name="accion" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
-        </div>
-
-        <div class="mb-4">
-          <label for="estado" class="block text-sm font-medium text-gray-700">Estado</label>
-          <select id="estado" name="estado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
-            <option value="1" selected>Activo</option>
-            <option value="2">Inactivo</option>
+          <label for="producto" class="block text-sm font-medium text-gray-700">Producto</label>
+          <select id="producto" name="producto" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($productos as $producto): ?>
+              <option value="<?= $producto['ID_PRODUCTO'] ?>"><?= $producto['NOMBRE_PRODUCTO'] ?></option>
+            <?php endforeach; ?>
           </select>
         </div>
 
         <div class="flex justify-end space-x-4">
-          <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='index.php?controlador=Promocion&accion=PromocionPage'">Cancelar</button>
+        <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="window.location.href='index.php?controller=Admin&action=adminPage'">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Guardar Promoción</button>
         </div>
       </form>

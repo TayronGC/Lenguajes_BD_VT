@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['role_id'] != 1){
+  header("Location: index.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +26,9 @@
 <body>
   <header class="bg-green-500 text-white py-4">
     <nav class="container mx-auto flex justify-between items-center">
-      <a href="/index.php" class="text-xl font-bold">Macrobiotica</a>
+      <a href="index.php?controller=Admin&action=adminPage" class="text-xl font-bold">Macrobiotica</a>
       <ul class="flex space-x-4">
-        <li><a href="/index.php" class="hover:text-gray-300">Inicio</a></li>
+        <li><a href="index.php?controller=Admin&action=adminPage" class="hover:text-gray-300">Inicio</a></li>
       </ul>
     </nav>
   </header>
@@ -53,8 +60,39 @@
         </div>
 
         <div class="mb-4">
-          <label for="id_direccion" class="block text-gray-700 font-bold">ID Dirección</label>
-          <input type="number" id="id_direccion" name="id_direccion" class="w-full px-4 py-2 border rounded-lg">
+          <label for="pais" class="block text-gray-700 font-bold">Pais</label>
+          <select id="pais" name="pais" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($paises as $pais): ?>
+              <option value="<?= $pais['ID_PAIS'] ?>"><?= $pais['NOMBRE'] ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="provincia" class="block text-gray-700 font-bold">Provincia</label>
+          <select id="provincia" name="provincia" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($provincias as $provincia): ?>
+              <option value="<?= $provincia['ID_PROVINCIA'] ?>"><?= $provincia['NOMBRE'] ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="canton" class="block text-gray-700 font-bold">Canton</label>
+          <select id="canton" name="canton" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($cantones as $canton): ?>
+              <option value="<?= $canton['ID_CANTON'] ?>"><?= $canton['NOMBRE'] ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="distrito" class="block text-gray-700 font-bold">Distrito</label>
+          <select id="distrito" name="distrito" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" >
+            <?php foreach ($distritos as $distrito): ?>
+              <option value="<?= $distrito['ID_DISTRITO'] ?>"><?= $distrito['NOMBRE'] ?></option>
+            <?php endforeach; ?>
+          </select>
         </div>
 
         

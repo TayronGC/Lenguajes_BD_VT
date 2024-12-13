@@ -30,7 +30,7 @@
                             </div>
                         <?php endif; ?>
 
-                        <form action="../controllers/RegistroController.php" method="POST">
+                        <form action="index.php?controller=Registro&action=registrarUser" method="POST">
                             <div class="input-field">
                                 <input type="text" class="input" id="nombre" name="nombre" required autocomplete="off">
                                 <label for="nombre">Nombre</label>
@@ -48,43 +48,40 @@
                                 <label for="correo">Correo Electrónico</label>
                             </div>
                             <div class="input-field">
-                                <select class="input" name="direccion_pais" id="direccion_pais" required>
-                                    <option value="" disabled selected>Selecciona el país</option>
-                                    <option value="1">Argentina</option>
-                                    <option value="2">Costa Rica</option>
-                                    <option value="3">Estados Unidos</option>
+                                <select id="pais" name="pais">
+                                    <?php foreach ($paises as $pais): ?>
+                                    <option value="<?= $pais['ID_PAIS'] ?>"><?= $pais['NOMBRE'] ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <label for="direccion_pais">País</label>
                             </div>
                             <div class="input-field">
-                                <select class="input" name="direccion_provincia" id="direccion_provincia" required>
-                                    <option value="" disabled selected>Selecciona la provincia</option>
-                                    <option value="1">San José</option>
-                                    <option value="2">Alajuela</option>
-                                    <option value="3">Cartago</option>
+                                <select id="provincia" name="provincia">
+                                    <?php foreach ($provincias as $provincia): ?>
+                                    <option value="<?= $provincia['ID_PROVINCIA'] ?>"><?= $provincia['NOMBRE'] ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <label for="direccion_provincia">Provincia</label>
                             </div>
                             <div class="input-field">
-                                <select class="input" name="direccion_canton" id="direccion_canton" required>
-                                    <option value="" disabled selected>Selecciona el cantón</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="otro">Otro</option>
+                                <select id="canton" name="canton">
+                                    <?php foreach ($cantones as $canton): ?>
+                                    <option value="<?= $canton['ID_CANTON'] ?>"><?= $canton['NOMBRE'] ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <label for="direccion_canton">Cantón</label>
                             </div>
-                            <div class="input-field" id="cantonCustom" style="display:none;">
-                                <input type="text" class="input" id="canton_especifico" name="canton_especifico" placeholder="Especifique el cantón">
+                            <div class="input-field">
+                                <select id="distrito" name="distrito">
+                                    <?php foreach ($distritos as $distrito): ?>
+                                    <option value="<?= $distrito['ID_DISTRITO'] ?>"><?= $distrito['NOMBRE'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <label for="direccion_canton">Distrito</label>
                             </div>
                             <div class="input-field">
                                 <input type="tel" class="input" id="telefono" name="telefono" required placeholder="Ingrese su número de teléfono">
                                 <label for="telefono">Teléfono</label>
-                            </div>
-                            <div class="input-field">
-                                <input type="text" class="input" id="direccion" name="direccion" required>
-                                <label for="direccion">Dirección</label>
                             </div>
                             <div class="input-field">
                                 <input type="text" class="input" id="nombre_usuario" name="nombre_usuario" required autocomplete="off">
@@ -100,7 +97,7 @@
                         </form>
 
                         <div class="signin">
-                            <span>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a></span>
+                            <span>¿Ya tienes una cuenta? <a href="index.php?controller=IniciarSession&action=loginPage">Inicia sesión aquí</a></span>
                         </div>
                     </div>
                 </div>

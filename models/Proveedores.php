@@ -11,6 +11,7 @@ class Proveedores {
     public $telefono;
     public $id_estado;
     public $id_direccion;
+    
 
     public function __construct($db) {
         $this->conn = $db;
@@ -19,7 +20,7 @@ class Proveedores {
     // Obtener un proveedor por ID
     public function verProveedor($id) {
         try {
-            $stid = oci_parse($this->conn, 'BEGIN FIDE_VER_PROVEEDOR_SP(:p_id_proveedor, :p_nombre, :p_apellido, :p_ciudad, :p_telefono, :p_estado); END;');
+            $stid = oci_parse($this->conn, 'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_VER_PROVEEDOR_SP(:p_id_proveedor, :p_nombre, :p_apellido, :p_ciudad, :p_telefono, :p_estado); END;');
 
             oci_bind_by_name($stid, ':p_id_proveedor', $id);
             oci_bind_by_name($stid, ':p_nombre', $nombre, 100);
@@ -72,7 +73,7 @@ class Proveedores {
     public function verTodosProveedores() {
         $proveedores = [];
         try {
-            $sp = 'BEGIN FIDE_PROVEEDOR_TB_VER_PROVEEDORES_SP(:p_cursor); END;';
+            $sp = 'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_PROVEEDOR_TB_VER_PROVEEDORES_SP(:p_cursor); END;';
             $stid = oci_parse($this->conn, $sp);
 
             $resultados = oci_new_cursor($this->conn);
@@ -97,7 +98,7 @@ class Proveedores {
     // Inactivar un proveedor
     public function inactivarProveedor($id) {
         try {
-            $sp = 'BEGIN FIDE_INACTIVAR_PROVEEDOR_SP(:p_id_proveedor); END;';
+            $sp = 'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_INACTIVAR_PROVEEDOR_SP(:p_id_proveedor); END;';
             $stid = oci_parse($this->conn, $sp);
 
             oci_bind_by_name($stid, ':p_id_proveedor', $id);

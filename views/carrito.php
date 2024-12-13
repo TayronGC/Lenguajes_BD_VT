@@ -135,7 +135,7 @@ session_start();
 <body>
     <nav aria-label="breadcrumb" class="p-5">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php?controller=Dashboard&action=dashboardpage">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
             <li class="breadcrumb-item active" aria-current="page">Carrito</li>
         </ol>
     </nav>

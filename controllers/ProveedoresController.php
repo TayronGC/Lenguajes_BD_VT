@@ -1,6 +1,11 @@
 <?php
 require_once 'models/DataBase.php';
 require_once 'models/Proveedores.php';
+require_once "models/direcciones/Pais.php";
+require_once "models/direcciones/Provincia.php";
+require_once "models/direcciones/Canton.php";
+require_once "models/direcciones/Distrito.php";
+require_once "models/direcciones/Direccion.php";
 
 class ProveedoresController {
     private $db;
@@ -19,12 +24,22 @@ class ProveedoresController {
             $this->proveedor->apellido1 = $_POST['apellido1'];
             $this->proveedor->apellido2 = $_POST['apellido2'];
             $this->proveedor->telefono = $_POST['telefono'];
-            $this->proveedor->id_direccion = $_POST['id_direccion'];
+            //$this->proveedor->id_direccion = $_POST['id_direccion'];
          //   $this->proveedor-> = $_POST['descripcion'];
+
+            $id_pais =  $_POST['pais'];
+            $id_provincia =  $_POST['provincia'];
+            $id_canton =  $_POST['canton'];
+            $id_distrito =  $_POST['distrito'];
+            $detalle =  'Direccion Proveedor';
+
+            $direccion = new Direccion($this->db);
+            $direccion->insertarDirecciones($detalle,$id_pais,$id_provincia,$id_canton,$id_distrito);
+            $this->proveedor->id_direccion = $direccion->id_direccion;
 
             if($this->proveedor->insertarProveedor()) {
                 echo "proveedor creada con exito";
-                //header ("Location: index.php?controller=Proveedor&action=verTodosProveedores");
+                header ("Location: index.php?controller=Proveedores&action=insertarProveedorpage");
                 //echo "<script>window.location.href = 'index.php?controller=Categoria&action=list';</script>";
             }else {
                 echo "Hubo un error al crear la proveedores.";
@@ -37,6 +52,15 @@ class ProveedoresController {
 
 
     public function insertarProveedorpage(){
+        $pais = new Pais($this->db);
+        $provincia = new provincia($this->db);
+        $canton = new Canton($this->db);
+        $distrito = new Distrito($this->db);
+
+        $paises = $pais->verPaises();
+        $provincias = $provincia->verProvincias();
+        $cantones = $canton->verCantones();
+        $distritos = $distrito->verDistritos();
         include 'views/CrearProveedor.php';
     }
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if($_SESSION['role_id'] != 1){
-  header("Location: index.php?controller=Dashboard&action=dashboardpage");
+  header("Location: index.php");
   exit();
 }
 //echo "Bienvenido, Usuario ID: " . $_SESSION['user_id'] . " y el rol " . $_SESSION['role_id'];
@@ -29,9 +29,9 @@ if($_SESSION['role_id'] != 1){
 <body>
   <header class="bg-green-500 text-white py-4">
     <nav class="container mx-auto flex justify-between items-center">
-      <a href="/index.php" class="text-xl font-bold">Macrobiotica</a>
+      <a href="index.php?controller=Admin&action=adminPage" class="text-xl font-bold">Macrobiotica</a>
       <ul class="flex space-x-4">
-        <li><a href="/index.php" class="hover:text-gray-300">Inicio</a></li>
+        <li><a href="index.php?controller=Admin&action=adminPage" class="hover:text-gray-300">Inicio</a></li>
       </ul>
     </nav>
   </header>

@@ -15,7 +15,7 @@
     <div class="wrapper">
     <nav aria-label="breadcrumb" class="p-3">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php?controller=Dashboard&action=dashboardpage">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
             <li class="breadcrumb-item active" aria-current="page">Carrito</li>
         </ol>
     </nav>
@@ -32,11 +32,11 @@
                         <header>Iniciar sesión</header>
 
                         <!-- Mensaje de error PHP -->
-                        <?php if (!empty($error)) { ?>
-                            <div class="alert alert-danger text-center" role="alert">
-                                <?php echo $error; ?>
+                        <?php if (!empty($message)): ?>
+                            <div class="alert alert-warning text-center" role="alert">
+                                <?= $message; ?>
                             </div>
-                        <?php } ?>
+                        <?php endif; ?>
 
                         <form action="index.php?controller=IniciarSession&action=iniciarSesion" method="POST">
                             <div class="input-field">
@@ -53,7 +53,7 @@
                         </form>
 
                         <div class="signin">
-                            <span>¿No tienes una cuenta? <a href="register.php">Regístrate aquí</a></span>
+                            <span>¿No tienes una cuenta? <a href="index.php?controller=Registro&action=registerPage">Regístrate aquí</a></span>
                         </div>
                     </div>
                 </div>

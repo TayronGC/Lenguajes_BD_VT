@@ -11,6 +11,7 @@ class Persona {
     public $telefono;
     public $nombre_usuario;
     public $contrasena;
+    public $id_direccion;
     public $id_rol;
 
     public function __construct($db) {
@@ -20,7 +21,7 @@ class Persona {
     public function insertUsuario(){
         try {
             //Llamado al Procedimiento Almacenado
-            $sp='BEGIN FIDE_PERSONA_TB_INSERTAR_PERSONA_SP(:p_nombre, :p_apellido1,:p_apellido2, :p_correo,:p_telefono, :p_nombre_usuario, :p_contrasena, :p_id_rol); END;';
+            $sp='BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_PERSONA_TB_INSERTAR_DATOS_SP(:p_nombre, :p_apellido1,:p_apellido2, :p_correo,:p_telefono, :p_nombre_usuario, :p_contrasena, :p_id_direccion, :p_id_rol); END;';
             $stid = oci_parse($this->conn,$sp);
             $this->id_rol = 2;
     
@@ -31,6 +32,7 @@ class Persona {
             oci_bind_by_name($stid, ":p_telefono",$this->telefono,100);
             oci_bind_by_name($stid, ":p_nombre_usuario",$this->nombre_usuario,100);
             oci_bind_by_name($stid, ":p_contrasena",$this->contrasena,100);
+            oci_bind_by_name($stid, ":p_id_direccion",$this->id_direccion);
             oci_bind_by_name($stid, ":p_id_rol",$this->id_rol);
     
             if (oci_execute($stid)) {
@@ -48,7 +50,7 @@ class Persona {
 
     public function validarUser($username){
         //Lamado a la funcion
-        $fn="BEGIN :P_RESULTADO := FIDE_PERSONA_TB_VALIDAR_NOMBRE_USUARIO_FN(:P_NOMBRE_USUARIO); END;";
+        $fn="BEGIN :P_RESULTADO := FIDE_PROYECTO_FINAL_FN_PKG.FIDE_PERSONA_TB_VALIDAR_NOMBRE_USUARIO_FN(:P_NOMBRE_USUARIO); END;";
         $stid = oci_parse($this->conn, $fn);
 
         oci_bind_by_name($stid, ":P_NOMBRE_USUARIO", $username);
@@ -84,6 +86,37 @@ class Persona {
         }
             oci_free_statement($stid);
             return false;
+    }
+
+    public function verTodasPersonas(){
+        $personas = [];
+        try {
+            $sp = 'BEGIN FIDE_PERSONA_TB_VER_PERSONA_SP(:p_cursor); END;';
+            $stid = oci_parse($this->conn,$sp);
+
+            $resultados = oci_new_cursor($this->conn);
+            oci_bind_by_name($stid,'p_cursor', $resultados,-1,OCI_B_CURSOR);
+
+            oci_execute($stid);
+            oci_execute($resultados);
+
+            //vincular datos
+            while (($row = oci_fetch_assoc($resultados)) != false){
+
+
+                $personas[] = $row;
+            }
+
+
+            //Cerrar cursor
+            oci_free_statement($stid);
+            oci_free_cursor($resultados);
+
+        } catch (Exception $e) {
+            echo "Error al obtener categorias: " . $e->getMessage();
+        }
+
+        return $personas;
     }
 /*
     public function iniciarSesion($nombre_usuario, $contrasena) {

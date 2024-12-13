@@ -80,6 +80,11 @@ class FacturaController{
 
     }
 
+    public function verInfoFactura(){
+        $facturas = $this->facturaH->verInfoFactura();
+        include 'views/Facturacion.php';
+    }
+
 }
 
 //$f = new FacturaController;
