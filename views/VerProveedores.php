@@ -37,8 +37,6 @@
             <th class="py-3 px-6 text-left">Primer Apellido</th>
             <th class="py-3 px-6 text-left">Segundo Apellido</th>
             <th class="py-3 px-6 text-left">Teléfono</th>
-            <th class="py-3 px-6 text-left">Estado</th>
-            <th class="py-3 px-6 text-center">Acciones</th>
           </tr>
         </thead>
         <tbody>
