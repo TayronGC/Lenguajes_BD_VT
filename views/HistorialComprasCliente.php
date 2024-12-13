@@ -32,26 +32,33 @@
       <table class="min-w-full bg-white shadow-md rounded-lg">
         <thead class="bg-green-500 text-white">
           <tr>
-            <th class="py-3 px-6 text-left">ID Análisis</th>
             <th class="py-3 px-6 text-left">Total Ventas</th>
             <th class="py-3 px-6 text-left">Frecuencia</th>
             <th class="py-3 px-6 text-left">Producto</th>
             <th class="py-3 px-6 text-left">Persona</th>
+            <th class="py-3 px-6 text-left">ID Análisis</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="border-b">
-            <td class="py-3 px-6">1</td>
-            <td class="py-3 px-6">$1000</td>
-            <td class="py-3 px-6">5</td>
-            <td class="py-3 px-6">Producto A</td>
-            <td class="py-3 px-6">Persona X</td>
-            <td class="py-3 px-6">Admin</td>
-            <td class="py-3 px-6 text-center">
-              <!--<button class="text-blue-500 hover:underline" onclick="openEditModal()">Editar</button>--> |
-              <a href="#" class="text-red-500 hover:underline">Eliminar</a>
-            </td>
-          </tr>
+        <?php if (!empty($ventas)) : ?>
+            <?php foreach ($ventas as $venta): ?>
+            <tr class="border-b">
+              <td class="py-3 px-6"><?= $venta['TOTAL_VENTAS'] ?></td>
+              <td class="py-3 px-6"><?= $venta['FRECUENCIA'] ?></td>
+              <td class="py-3 px-6"><?= $venta['NOMBRE_PRODUCTO'] ?></td>
+              <td class="py-3 px-6"><?= $venta['NOMBRE'] ?></td>
+              <td class="py-3 px-6"><?= $venta['CREADO_POR'] ?></td>
+              <td class="py-3 px-6"><?= $venta['FECHA_CREACION'] ?></td>
+              <td class="py-3 px-6 text-center">
+                <button class="text-red-500 hover:underline" onclick="openDeleteModal()">Eliminar</button>
+              </td>
+            </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr class="border-b">
+              <td class="py-3 px-6">No se encontraron Ventas</td>
+            </tr>
+          <?php endif; ?>
         </tbody>
       </table>
     </div>

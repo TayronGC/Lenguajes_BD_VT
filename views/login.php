@@ -11,7 +11,14 @@
 
 <body>
 
+
     <div class="wrapper">
+    <nav aria-label="breadcrumb" class="p-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php?controller=Dashboard&action=dashboardpage">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Carrito</li>
+        </ol>
+    </nav>
         <div class="container main">
             <div class="row">
                 <!-- Imagen lateral -->

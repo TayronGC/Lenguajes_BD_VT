@@ -133,10 +133,10 @@ session_start();
 </head>
 
 <body>
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="p-5">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/views/dashboard.php">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item"><a href="index.php?controller=Dashboard&action=dashboardpage">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Carrito</li>
         </ol>
     </nav>
 
@@ -175,7 +175,7 @@ session_start();
                 <p>Total: $<?php echo number_format($total, 2); ?></p>
             </div>
 
-            <a href="index.php?controller=Carrito&action=finalizarCompra" class="btn-comprar">Finalizar Compra</a>
+            <a href="index.php?controller=Factura&action=insertarFactura" class="btn-comprar">Finalizar Compra</a>
         <?php else: ?>
             <p class="empty-message">Tu carrito está vacío. ¡Añade productos para comenzar!</p>
         <?php endif; ?>

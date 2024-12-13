@@ -18,7 +18,7 @@
                 </div>
                 <div class="navbar">
                     <ul>
-                        <li><a href="/views/dashboard.php">Inicio</a></li>
+                        <li><a href="index.php?controller=Dashboard&action=dashboardpage">Inicio</a></li>
                         <li><a href="/views/ProductosCliente.php">Productos</a></li>
                         <li><a href="/views/PromocionesCliente.php">Promociones</a></li>
                     </ul>
