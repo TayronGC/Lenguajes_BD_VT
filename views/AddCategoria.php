@@ -89,13 +89,7 @@ if($_SESSION['role_id'] != 1){
           <label for="descripcionCategoria" class="block text-sm font-medium text-gray-700">Descripción</label>
           <input type="text" id="descripcionCategoria" name="descripcion" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
         </div>
-        <div class="mb-4">
-          <label for="estadoCategoria" class="block text-sm font-medium text-gray-700">Estado</label>
-          <select id="estadoCategoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-            <option value="1">Activo</option>
-            <option value="2">Inactivo</option>
-          </select>
-        </div>
+       
         <div class="flex justify-end space-x-4">
           <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="closeAddModal()">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Agregar</button>
@@ -117,6 +111,16 @@ if($_SESSION['role_id'] != 1){
           <label for="editDescripcionCategoria" class="block text-sm font-medium text-gray-700">Descripción</label>
           <input type="text" id="editDescripcionCategoria" name="descripcion" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" value="">
         </div>
+
+
+        <div class="mb-4">
+          <label for="estadoCategoria" class="block text-sm font-medium text-gray-700">Estado</label>
+          <select name="id_estado" id="estadoCategoria" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+          </select>
+        </div>
+
         <div class="flex justify-end space-x-4">
           <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="closeEditModal()">Cancelar</button>
           <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Guardar Cambios</button>
