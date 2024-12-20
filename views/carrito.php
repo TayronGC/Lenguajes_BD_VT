@@ -13,7 +13,7 @@ session_start();
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
+            background-color:rgb(156, 153, 153);
             margin: 0;
             padding: 0;
         }
@@ -22,15 +22,17 @@ session_start();
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         h2 {
             text-align: center;
-            color: #333;
+            color: #333333;
             margin-bottom: 20px;
+            font-weight: bold;
         }
 
         table {
@@ -42,7 +44,7 @@ session_start();
         table,
         th,
         td {
-            border: 1px solid #ddd;
+            border: 1px solid #dddddd;
         }
 
         th,
@@ -53,9 +55,9 @@ session_start();
         }
 
         th {
-            background-color: #f4f4f4;
-            font-weight: 700;
-            color: #555;
+            background-color: #0275d8;
+            color: white;
+            font-weight: bold;
         }
 
         tr:nth-child(even) {
@@ -63,7 +65,7 @@ session_start();
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #e9ecef;
         }
 
         .total {
@@ -71,21 +73,22 @@ session_start();
             margin-top: 20px;
             font-size: 20px;
             font-weight: bold;
+            color: #333333;
         }
 
         .btn-eliminar {
-            color: #fff;
+            color: #ffffff;
             background-color: #e74c3c;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 14px;
+            transition: background-color 0.3s;
         }
 
         .btn-eliminar:hover {
             background-color: #c0392b;
-            transition: 0.3s;
         }
 
         .btn-comprar {
@@ -93,32 +96,59 @@ session_start();
             width: 100%;
             max-width: 300px;
             margin: 20px auto;
-            background-color: #27ae60;
+            background-color: #5cb85c;
             padding: 15px;
             text-align: center;
-            color: #fff;
+            color: white;
             font-size: 18px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
             text-decoration: none;
+            transition: background-color 0.3s;
         }
 
         .btn-comprar:hover {
-            background-color: #2ecc71;
-            transition: 0.3s;
+            background-color: #4cae4c;
         }
 
         .empty-message {
             text-align: center;
-            color: #888;
+            color: #888888;
             font-size: 18px;
-            margin: 20px 0;
+            margin: 40px 0;
+        }
+
+        .alert {
+            font-size: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .alert-success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .alert-danger {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 768px) {
-
             table,
             th,
             td {
@@ -133,7 +163,7 @@ session_start();
 </head>
 
 <body>
-    <nav aria-label="breadcrumb" class="p-5">
+    <nav aria-label="breadcrumb" class="p-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
             <li class="breadcrumb-item active" aria-current="page">Carrito</li>
@@ -144,6 +174,10 @@ session_start();
         <h2>Tu carrito de compras</h2>
 
         <?php if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])): ?>
+            <div class="alert alert-success">
+                ¡Has agregado productos a tu carrito! Finaliza tu compra cuando estés listo.
+            </div>
+
             <table>
                 <thead>
                     <tr>
@@ -177,9 +211,11 @@ session_start();
 
             <a href="index.php?controller=Factura&action=insertarFactura" class="btn-comprar">Finalizar Compra</a>
         <?php else: ?>
-            <p class="empty-message">Tu carrito está vacío. ¡Añade productos para comenzar!</p>
+            <div class="alert alert-danger">
+                Tu carrito está vacío. ¡Añade productos para comenzar tu compra!
+            </div>
+            <p class="empty-message">Parece que aún no has agregado productos. <a href="index.php">Volver a la tienda</a></p>
         <?php endif; ?>
-
     </div>
 
     <script>
