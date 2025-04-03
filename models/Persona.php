@@ -23,7 +23,7 @@ class Persona {
             //Llamado al Procedimiento Almacenado
             $sp='BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_PERSONA_TB_INSERTAR_DATOS_SP(:p_nombre, :p_apellido1,:p_apellido2, :p_correo,:p_telefono, :p_nombre_usuario, :p_contrasena, :p_id_direccion, :p_id_rol); END;';
             $stid = oci_parse($this->conn,$sp);
-            $this->id_rol = 2;
+            $this->id_rol = 1;
     
             oci_bind_by_name($stid, ":p_nombre",$this->nombre,100);
             oci_bind_by_name($stid, ":p_apellido1",$this->apellido1,100);

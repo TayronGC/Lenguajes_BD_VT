@@ -102,7 +102,7 @@ class Categoria {
     public function verTodasCategorias(){
         $categorias = [];
         try {
-            $sp = 'BEGIN FIDE_CATEGORIA_VER_CATEGORIAS_SP(:p_cursor); END;';
+            $sp = 'BEGIN FIDE_PROYECTO_FINAL_SP_PKG.FIDE_CATEGORIA_VER_CATEGORIAS_SP(:p_cursor); END;';
             $stid = oci_parse($this->conn,$sp);
 
             $resultados = oci_new_cursor($this->conn);

@@ -61,11 +61,7 @@ if($_SESSION['role_id'] != 1){
           <h3 class="text-xl font-semibold mb-4">Proveedores</h3>
           <a href="index.php?controller=Proveedores&action=insertarProveedorpage" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
-        <!-- Card para Proveedores -->
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-semibold mb-4">Ver y Editar Proveedores</h3>
-          <a href="index.php?controller=Proveedores&action=verTodosProveedores" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
-        </div>
+        
 
         <!-- Card para Categorías -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -79,17 +75,7 @@ if($_SESSION['role_id'] != 1){
           <a href="index.php?controller=Factura&action=verInfoFactura" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
 
-        <!-- Card para Pedidos -->
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-semibold mb-4">Pedidos</h3>
-          <a href="index.php?controller=Pedido&action=crearPedidoPage" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
-        </div>
-
-        <!-- Card para Pedidos -->
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-semibold mb-4">Ver y Editar Pedidos</h3>
-          <a href="/views/verPedidos.php" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
-        </div>
+       
 
         <!-- Card para Promociones -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -97,11 +83,7 @@ if($_SESSION['role_id'] != 1){
           <a href="index.php?controller=HistorialCompras&action=verhistoralCompras" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
         </div>
 
-        <!-- Card para Devoluciones -->
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-semibold mb-4">Devoluciones</h3>
-          <a href="index.php?controller=Devolucion&action=devolucionPage" class="bg-green-500 text-white py-2 px-4 rounded-full inline-block hover:bg-green-600">Acceder</a>
-        </div>
+      
 
       </div>
     </section>
