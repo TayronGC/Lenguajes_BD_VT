@@ -72,7 +72,6 @@ if($_SESSION['role_id'] != 1){
               <td class="py-3 px-6"><?= $factura['FECHA_CREACION'] ?></td>
               <td class="py-3 px-6"><?= $factura['CANTIDAD'] ?></td>
               <td class="py-3 px-6"><?= $factura['TOTAL'] ?></td>
-              <td class="py-3 px-6"></td>
             </tr>
             <?php endforeach; ?>
           <?php else: ?>
@@ -101,6 +100,15 @@ if($_SESSION['role_id'] != 1){
                     <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Guardar Factura</button>
                 </div>
             </form>
+<!--
+            <form action="../models/generar_factura.php" method="post" target="_blank">
+    <input type="hidden" name="facturas" value='<?= json_encode($facturas) ?>'>
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">
+        Guardar Factura
+    </button>
+</form>
+          -->
+
 
         </div>
     </div>
